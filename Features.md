@@ -1,0 +1,10 @@
+- Logo rigolo
+- Plateformes
+	-> Pop au dessus
+	-> Depop en dessous de la fenêtre
+- Sauter, aller à droite ou à gauche
+- Attraction gravitationnelle
+- Score
+- Mort
+- Respawn
+- Scrolling vertical
