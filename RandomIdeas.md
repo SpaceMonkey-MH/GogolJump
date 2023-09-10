@@ -1,0 +1,3 @@
+- Flip animation left and right
+- Boost upwards when player touches a platform (tp for starters)
+- 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ujmiby58pgyr"]
+[gd_scene load_steps=6 format=3 uid="uid://ujmiby58pgyr"]
 
 [ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="1_7x68q"]
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_o15ul"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a8n6m"]
 bounce = 1.0
@@ -22,6 +23,7 @@ height = 56.0
 
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_a8n6m")
+script = ExtResource("1_o15ul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(158, 545)
@@ -32,3 +34,6 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(158, 545)
 shape = SubResource("CapsuleShape2D_p3dck")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
