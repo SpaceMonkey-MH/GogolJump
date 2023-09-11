@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ujmiby58pgyr"]
+[gd_scene load_steps=5 format=3 uid="uid://buett1qyui77u"]
 
-[ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="1_7x68q"]
-[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_o15ul"]
+[ext_resource type="Script" path="res://Scenes/Player/playerbis.gd" id="1_j6ul4"]
+[ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="2_lqd3w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndhsx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7x68q")
+"texture": ExtResource("2_lqd3w")
 }],
 "loop": true,
 "name": &"walk",
@@ -18,8 +18,8 @@ animations = [{
 radius = 26.0
 height = 56.0
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_o15ul")
+[node name="Player" type="RigidBody2D"]
+script = ExtResource("1_j6ul4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(158, 545)

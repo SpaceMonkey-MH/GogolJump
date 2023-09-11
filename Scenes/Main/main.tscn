@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=5 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://ujmiby58pgyr" path="res://Scenes/Player/player.tscn" id="2_6nef5"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
+[ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="4_44phr"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kdhwv")
 
 [node name="Player" parent="." instance=ExtResource("2_6nef5")]
-position = Vector2(9, -23)
+position = Vector2(147, -16)
 
 [node name="StartPosition" type="Marker2D" parent="."]
 
 [node name="Platform" parent="." instance=ExtResource("3_swhaf")]
 position = Vector2(-1012, -1092)
 scale = Vector2(4.5, 3)
+
+[node name="Player2" parent="." instance=ExtResource("4_44phr")]
+position = Vector2(6, -28)

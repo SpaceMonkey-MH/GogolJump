@@ -1,24 +1,28 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-var velocity = Vector2.ZERO  # The player's movement vector.
+#var velocity = Vector2(0, 250)  # The player's movement vector.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity.y += 1
-	position += velocity 
+	pass
+
+func _physics_process(delta):
+	'''var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.normal)'''
+	pass
+
+func _integrate_forces(state):
+	#apply_central_force(Vector2(0, -1000))
+	pass
 
 func _on_body_entered(body):
 	velocity.y -= 100
 	position += velocity 
 	print("Hello")
 
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	velocity.y -= 100
-	position += velocity 
-	print("Hello")
