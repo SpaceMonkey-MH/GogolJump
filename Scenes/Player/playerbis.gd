@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var thrust = Vector2(0, -2000)
+var thrust = Vector2(0, -15000)
 var lateral_thrust = Vector2(0, -400)
 var torque = 20000
 var jump1 = false
@@ -29,18 +29,28 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("start"):
 		jump2 = true
 
 
 func _on_body_entered(body):
-	print("hello")
-	jump1 = true
+	# print("hello")
+	if body.is_in_group("platforms") or body.is_in_group("moving_platforms"):	
+		print("hi")
+		jump1 = true
 	
 
+# Another way to do this could be to use something like is_on_ground().
+# Apparently you can't with a RigidBody2D.
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	print("goodbye")
-	await get_tree().create_timer(0.3).timeout
+	# await get_tree().create_timer(0.3).timeout	# This causes error when the character isn't jumping or maybe is on ground
 	jump1 = false
+
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false	# Not sure if these do anything.
