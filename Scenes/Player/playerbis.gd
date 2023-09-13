@@ -1,10 +1,13 @@
 extends RigidBody2D
 
+signal on_moving_platform
+
 var thrust = Vector2(0, -15000)
 var lateral_thrust = Vector2(0, -400)
-var torque = 20000
+# var torque = 20000
 var jump1 = false
 var jump2 = false
+var on_moving_platform_count = 0
 
 func _integrate_forces(state):
 	# if Input.is_action_pressed("ui_up"):
@@ -36,10 +39,15 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	# print("hello")
-	if body.is_in_group("platforms") or body.is_in_group("moving_platforms"):	
+	if body.is_in_group("platforms"):	
 		print("hi")
 		jump1 = true
-	
+	if body.is_in_group("moving_platforms"):
+		print("hi2")
+		jump1 = true
+		on_moving_platform_count += 1
+		if on_moving_platform_count == 1:	# This is to prevent a crash in main (queue free on a null value).
+			on_moving_platform.emit()
 
 # Another way to do this could be to use something like is_on_ground().
 # Apparently you can't with a RigidBody2D.
