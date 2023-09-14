@@ -5,9 +5,11 @@ signal on_moving_platform
 var thrust = Vector2(0, -15000)
 var lateral_thrust = Vector2(0, -400)
 # var torque = 20000
-var jump1 = false
-var jump2 = false
+var jump1 = false	# Whether the Player is on the floor (platforms and moving ones only).
+var jump2 = false	# Whether the key to start jumping has been pressed.
 var on_moving_platform_count = 0
+
+@export var start_pressed = false
 
 func _integrate_forces(state):
 	# if Input.is_action_pressed("ui_up"):
@@ -33,7 +35,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_pressed("start"):
+	if Input.is_action_pressed("start_jumping"):
+		start_pressed = true
 		jump2 = true
 
 
@@ -48,6 +51,7 @@ func _on_body_entered(body):
 		on_moving_platform_count += 1
 		if on_moving_platform_count == 1:	# This is to prevent a crash in main (queue free on a null value).
 			on_moving_platform.emit()
+			print("on_moving_platform for the first time")
 
 # Another way to do this could be to use something like is_on_ground().
 # Apparently you can't with a RigidBody2D.
@@ -62,3 +66,8 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false	# Not sure if these do anything.
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+	print("player_freed")

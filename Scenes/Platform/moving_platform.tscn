@@ -11,6 +11,8 @@ script = ExtResource("1_1u0m0")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." groups=["moving_platforms"]]
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="AnimatableBody2D"]
+
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_6u345")
@@ -18,3 +20,5 @@ texture = ExtResource("2_6u345")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_0e75j")
 one_way_collision = true
+
+[connection signal="screen_exited" from="AnimatableBody2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

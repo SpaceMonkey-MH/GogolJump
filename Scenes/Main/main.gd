@@ -2,30 +2,55 @@ extends Node
 
 
 @export var platform_scene: PackedScene
+# @export var ground_scene: PackedScene
+@export var player_scene: PackedScene
 var score
 var platform_duration = 15.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
+	$Ground.hide()
+	pass
+	# new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_down"):	# This is just a test.
-		get_tree().reload_current_scene()
+	pass
+#	if Input.is_action_just_pressed("ui_down"):	# This is just a test.
+#		get_tree().reload_current_scene()
+#	if Input.is_action_just_pressed("ui_up"):
+#		new_game()
 
 
 func new_game():
+	# Resetting the values for a new game.
 	score = 0
-	$Player.start($StartPosition.position)
-	$Player.show()
+	platform_duration = 15.0
+	$PlatformTimer.wait_time = 3.0
+	var player = player_scene.instantiate()
+	player.start($StartPosition.position)
+	$Ground.start($GroundPosition.position)
+	player.show()
+	$PlatformTimer.start()
+	$MetaGameTimer.start()
+	$Ground.show()
+	$Ground.disabled = false
+	player.connect("on_moving_platform", _on_player_on_moving_platform)
+	add_child(player)
+	
+	$HUD.update_score(score)
+	$HUD.show_message("Press Space \nto start jumping")
 
 
 func game_over():
-	$Player.hide()
-
+	$HUD.show_game_over()
+	$PlatformTimer.stop()
+	$MetaGameTimer.stop()
+	get_tree().call_group("moving_platforms", "queue_free")
+	# $Player.hide()
+	# get_tree().reload_current_scene()
 
 
 
@@ -44,7 +69,7 @@ func _on_platform_timer_timeout():
 	var direction = platform_spawn_location.rotation + PI / 2
 	
 	# Set the platform's position to a random location.
-	print(platform_spawn_location.position)
+	# print(platform_spawn_location.position)
 	platform.position = platform_spawn_location.position	# I don't understand why this doesn't spawn 
 	# on the correct location. It does now, and I know why (the platform wasn't centered in the platform scene).
 	
@@ -57,24 +82,33 @@ func _on_platform_timer_timeout():
 	# platform.linear_velocity = velocity.rotated(direction)
 	
 	# Spawn the platform by adding it to the Main scene.
-	print(platform.position)
+	# print(platform.position)
+	platform.connect("scored", on_scored)
 	add_child(platform)
 
 
 
 
-func _on_death_zone_body_entered(body):	# Triggered when the player enters the dead zone aka exits the screen (bottom)
+func _on_death_zone_body_entered(body):	# Triggered when the player enters the death zone 
+	# aka exits the screen (bottom)
 	if body.is_in_group("player"):
-		print("dead")
-		# $Player.hide()
+		print("dead : ", score)
 		game_over()
 
 
-func _on_player_on_moving_platform():
-	$Ground.queue_free()
+func on_scored():
+	score += 1
+	$HUD.update_score(score)
+	
 
+func _on_player_on_moving_platform():	# Connected via code.
+	# $Ground.queue_free()
+	# $Ground.PROCESS_MODE_DISABLED	# Does not work!
+	$Ground.hide()
+	$Ground.disabled = true	# Works!
 
-func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms and accelerates the platforms animations on a fixed timer.
+func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms and accelerates 
+	# the platforms animations on a fixed timer.
 	$PlatformTimer.wait_time -= 0.25
 	platform_duration -= 1
 	print(platform_duration, " ", $PlatformTimer.wait_time)
