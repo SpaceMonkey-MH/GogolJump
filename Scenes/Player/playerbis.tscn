@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://buett1qyui77u"]
+
+[ext_resource type="Script" path="res://Scenes/Player/playerbis.gd" id="1_j6ul4"]
+[ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="2_lqd3w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndhsx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lqd3w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3dck"]
+radius = 26.0
+height = 56.0
+
+[node name="Player" type="RigidBody2D" groups=["player"]]
+script = ExtResource("1_j6ul4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ndhsx")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_p3dck")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

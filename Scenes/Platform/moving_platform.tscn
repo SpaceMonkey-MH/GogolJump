@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3h1mcp7snohv"]
+
+[ext_resource type="Script" path="res://Scenes/Platform/moving_platform.gd" id="1_1u0m0"]
+[ext_resource type="Texture2D" uid="uid://dcm3nx2kasf2i" path="res://Sprites/Platform_2.png" id="2_6u345"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e75j"]
+size = Vector2(72, 18)
+
+[node name="MovingPlatform" type="Node2D" groups=["moving_platforms"]]
+script = ExtResource("1_1u0m0")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." groups=["moving_platforms"]]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6u345")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_0e75j")
+one_way_collision = true
+
+[connection signal="screen_exited" from="AnimatableBody2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
