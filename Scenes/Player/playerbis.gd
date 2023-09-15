@@ -43,21 +43,21 @@ func _process(_delta):
 func _on_body_entered(body):
 	# print("hello")
 	if body.is_in_group("platforms"):	
-		print("hi")
+		# print("hi")
 		jump1 = true
 	if body.is_in_group("moving_platforms"):
-		print("hi2")
+		# print("hi2")
 		jump1 = true
 		on_moving_platform_count += 1
 		if on_moving_platform_count == 1:	# This is to prevent a crash in main (queue free on a null value).
 			on_moving_platform.emit()
-			print("on_moving_platform for the first time")
+			# print("on_moving_platform for the first time")
 
 # Another way to do this could be to use something like is_on_ground().
 # Apparently you can't with a RigidBody2D.
 
 func _on_body_exited(_body):
-	print("goodbye")
+	# print("goodbye")
 	# await get_tree().create_timer(0.3).timeout	# This causes error when the character isn't jumping or maybe is on ground
 	jump1 = false
 
@@ -70,4 +70,4 @@ func start(pos):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
-	print("player_freed")
+	# print("player_freed")

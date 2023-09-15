@@ -4,14 +4,14 @@ extends Node
 @export var platform_scene: PackedScene
 # @export var ground_scene: PackedScene
 @export var player_scene: PackedScene
-var score
+var score = 0
 var platform_duration = 15.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Ground.hide()
-	pass
+	# $Ground.hide()
+	$HUD.update_highscore(score)
 	# new_game()
 
 
@@ -55,11 +55,11 @@ func game_over():
 
 
 func _on_platform_timer_timeout():
-	print("platform_timer_timeout")
+	# print("platform_timer_timeout")
 	# Create a new instance of the Platform scene.
 	var platform = platform_scene.instantiate()
 	platform.duration = platform_duration
-	print(platform.duration)
+	# print(platform.duration)
 	
 	# Choose a random location on Path2D.
 	var platform_spawn_location = get_node("PlatformSpawnPath/PlatformSpawnLocation")
@@ -92,7 +92,7 @@ func _on_platform_timer_timeout():
 func _on_death_zone_body_entered(body):	# Triggered when the player enters the death zone 
 	# aka exits the screen (bottom)
 	if body.is_in_group("player"):
-		print("dead : ", score)
+		# print("dead : ", score)
 		game_over()
 
 
@@ -111,4 +111,4 @@ func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms an
 	# the platforms animations on a fixed timer.
 	$PlatformTimer.wait_time -= 0.25
 	platform_duration -= 1
-	print(platform_duration, " ", $PlatformTimer.wait_time)
+	# print(platform_duration, " ", $PlatformTimer.wait_time)

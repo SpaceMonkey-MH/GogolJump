@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	if position.y == 720:
 		queue_free()	# Not working, might be an issue if the platforms overload the engine.
-		print("moving_platform_freed")
+		# print("moving_platform_freed")
 
 
 func start_tween():
@@ -27,4 +27,4 @@ func start_tween():
 func _on_visible_on_screen_notifier_2d_screen_exited():	# This works
 	scored.emit()
 	queue_free()
-	print("moving_platform_freed")
+	# print("moving_platform_freed")
