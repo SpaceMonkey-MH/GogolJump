@@ -19,8 +19,22 @@ offset_left = -21.5
 offset_right = 21.5
 offset_bottom = 26.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 70
-text = "0"
+theme_override_font_sizes/font_size = 50
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.5
+offset_top = 60.0
+offset_right = 77.5
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Highscore:"
 horizontal_alignment = 1
 vertical_alignment = 1
 

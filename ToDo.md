@@ -1,0 +1,8 @@
+- Change platform sprites.
+- Make high score. Done but not tested with export!
+- Sound?
+- Background.
+- Clean code (prints and useless crap).
+- Finish comments and documentation.
+- Balance.
+- Solve bug abuse on score (not jumping)
