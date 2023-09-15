@@ -40,7 +40,7 @@ func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
 	
 	
-# WARNING: NOT HANDLING THE CASE WHERE THE FILE IS EMPTY. I think it does now.
+# WARNING: NOT HANDLING THE CASE WHERE THE FILE IS EMPTY. // I think it does now.
 func update_highscore(score):
 	var highscore_string = load_from_file()
 	var highscore
