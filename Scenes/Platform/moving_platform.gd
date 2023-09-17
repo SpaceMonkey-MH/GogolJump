@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if position.y == 720:
-		queue_free()	# Not working, might be an issue if the platforms overload the engine.
+		queue_free()	# Not working, might be an issue if the platforms overload the engine. A workaround is bellow.
 		# print("moving_platform_freed")
 
 

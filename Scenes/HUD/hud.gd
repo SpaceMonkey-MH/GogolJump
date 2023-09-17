@@ -1,8 +1,9 @@
 extends CanvasLayer
 
-# Notifies `Main` node that the StartButton has been pressed.
+# Notifies `Main` scene that the StartButton has been pressed.
 signal start_game
 
+var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
 var score_hud	# Needed to get the score in this script.
 
 # Called when the node enters the scene tree for the first time.
@@ -15,16 +16,19 @@ func _process(delta):
 	pass
 
 
-
+# Function used to display some text in the Message label.
 func show_message(text):
 	$Message.text = text
 	$Message.show()
 	$MessageTimer.start()
 
+
+# Function used to display the game-over message and reset the HUD to the start game state.
 func show_game_over():
 	show_message("Game Over")
-	# Wait until the MessageTimer has counted down.
-	await $MessageTimer.timeout
+	# Wait until the MessageTimer has counted down. // Wait a fixed timer instead.
+	await get_tree().create_timer(2.0).timeout
+	# await $MessageTimer.timeout
 	
 	$Message.text = "Gogol Jump"
 	$Message.show()
@@ -41,32 +45,46 @@ func update_score(score):
 	
 	
 # WARNING: NOT HANDLING THE CASE WHERE THE FILE IS EMPTY. // I think it does now.
+# Function used to keep the highscore up to date, both in the HUD and in the save file.
 func update_highscore(score):
-	var highscore_string = load_from_file()
-	var highscore
-	if highscore_string == "":
-		highscore = 0
+	var highscore_string = load_from_file()	# Highscore in the form of a string, the way it is in the file.
+	var highscore	# Highscore in the form of an int, used for comparisons.
+	if highscore_string == "":	# Testing if the string is empty before changing its type to int.
+		highscore = 0	# Default value
 	else:
-		highscore = int(highscore_string)
-	print(highscore, " ", score)
-	highscore_string = str(max(highscore, score))
-	save_to_file(highscore_string)
-	$HighScoreLabel.text = "Highscore: " + highscore_string
+		highscore = int(highscore_string)	# Casting to an int.
+	# print(highscore, " ", score)
+	highscore_string = str(max(highscore, score))	# Taking the max between the score and the highscore.
+	save_to_file(highscore_string)	# Saving highscore.
+	$HighScoreLabel.text = "Highscore: " + highscore_string	# Displaying highscore.
 	
 
+
+# Handles what happens when the StartButton is pressed.
 func _on_start_button_pressed():
 	$StartButton.hide()
-	start_game.emit()
+	start_game.emit()	# Sends a signal to the main scene that the game should start.
 
 
 func _on_message_timer_timeout():
-	$Message.hide()
+	if start_pressed:
+		$Message.hide()
+	else:
+		$MessageTimer.start()	# Warning: this is very messy,
+								# as it creates many useless timers,
+								# might be an issue in the future.
+								# Possible fix: rework completely the message handling,
+								# have separate functions for the "press space" message.
+		# print("timemout")
+
 
 
 # Function that saves content to a fixed file.
 func save_to_file(content):
 	var file = FileAccess.open("user://highscore.dat", FileAccess.WRITE)
 	file.store_string(content)
+
+
 
 # Function that returns the content loaded from a fixed file.
 func load_from_file():
@@ -75,5 +93,5 @@ func load_from_file():
 	var file_exists = FileAccess.file_exists("user://highscore.dat")
 	if file_exists:
 		content = file.get_as_text()
-	print("c: ", content)
+	# print("c: ", content)
 	return content
