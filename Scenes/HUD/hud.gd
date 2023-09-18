@@ -35,7 +35,7 @@ func show_game_over():
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
-	print("show_game_over")
+	# print("show_game_over")
 	update_highscore(score_hud)
 
 
@@ -95,3 +95,7 @@ func load_from_file():
 		content = file.get_as_text()
 	# print("c: ", content)
 	return content
+
+
+func _on_instructions_button_pressed():
+	hide()
