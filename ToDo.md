@@ -1,14 +1,14 @@
 - Solve bug abuse on score (not jumping). // Done I think, but could be more elegant.
-- Fix message telling to press space (it should stay until space has been pressed). // Done but there is an issue,
-	too many timers are created.
+- Fix message telling to press space (it should stay until space has been pressed). // Done 
+	but there is an issue,	too many timers are created. // Obsolete
 - Change platform sprites. Use animations.
 - Export on Linux/Android.
 - Make high score. // Done but not tested with export!
 - Sound?
 - Background.
-- Clean code (prints and useless crap). Maybe.
+- Clean code (prints and useless crap). // Maybe.
 - Finish comments and documentation.
 - Balance.
-- Add instructions to the game (a menu telling what to do).
-- Add animation for when a platform exits the screen (see RandomIdeas.md); Done but ugly.
-- Rework difficulty scaling ?
+- Add instructions to the game (a menu telling what to do). // Done.
+- Add animation for when a platform exits the screen (see RandomIdeas.md). // Done but ugly.
+- Rework difficulty scaling?

@@ -1,20 +1,21 @@
 extends RigidBody2D
 
 signal on_moving_platform
-signal start_pressed
+# signal start_pressed
 
 var thrust = Vector2(0, -15000)
 var lateral_thrust = Vector2(0, -400)
 # var torque = 20000
 var jump1 = false	# Whether the Player is on the floor (platforms and moving ones only).
-var jump2 = false	# Whether the key to start jumping has been pressed.
+# var jump2 = false	# Whether the key to start jumping has been pressed.
 var on_moving_platform_count = 0
 
 # @export var start_pressed = false
 
 func _integrate_forces(state):
 	# if Input.is_action_pressed("ui_up"):
-	if jump1 and jump2:
+#	if jump1 and jump2:
+	if jump1:
 		state.apply_central_force(thrust)
 	else:
 		state.apply_force(Vector2())
@@ -36,10 +37,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_pressed("start_jumping"):
-#		start_pressed = true
-		start_pressed.emit()
-		jump2 = true
+	pass
+#	if Input.is_action_pressed("start_jumping"):
+##		start_pressed = true
+#		start_pressed.emit()
+#		jump2 = true
 
 
 func _on_body_entered(body):

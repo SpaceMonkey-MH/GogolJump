@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=10 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
+[ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background_1.png" id="4_2ch6y"]
 [ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="4_44phr"]
 [ext_resource type="PackedScene" uid="uid://d3h1mcp7snohv" path="res://Scenes/Platform/moving_platform.tscn" id="4_bvxep"]
 [ext_resource type="PackedScene" uid="uid://bdc5630p27s30" path="res://Scenes/death_zone.tscn" id="5_i6nd2"]
@@ -18,6 +19,11 @@ point_count = 2
 script = ExtResource("1_kdhwv")
 platform_scene = ExtResource("4_bvxep")
 player_scene = ExtResource("4_44phr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 720.0
+texture = ExtResource("4_2ch6y")
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 550)

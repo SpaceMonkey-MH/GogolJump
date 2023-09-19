@@ -19,6 +19,7 @@ offset_left = -21.5
 offset_right = 21.5
 offset_bottom = 26.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Score: 0"
 horizontal_alignment = 1
@@ -33,6 +34,7 @@ offset_top = 60.0
 offset_right = 77.5
 offset_bottom = 105.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Highscore:"
 horizontal_alignment = 1
@@ -50,6 +52,7 @@ offset_right = 163.0
 offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Gogol Jump"
 horizontal_alignment = 1
@@ -67,11 +70,15 @@ offset_right = 100.0
 offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0.12549, 0.513726, 0.231373, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.698039, 0.0823529, 0.2, 1)
 theme_override_font_sizes/font_size = 35
 shortcut = SubResource("Shortcut_dbpri")
 text = "Start Game"
 
 [node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="InstructionsButton" type="Button" parent="."]

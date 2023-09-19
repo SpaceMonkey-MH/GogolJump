@@ -4,7 +4,7 @@ extends CanvasLayer
 signal start_game
 signal instructions
 
-var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
+# var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
 var score_hud	# Needed to get the score in this script.
 
 # Called when the node enters the scene tree for the first time.
@@ -27,9 +27,9 @@ func show_message(text):
 # Function used to display the game-over message and reset the HUD to the start game state.
 func show_game_over():
 	show_message("Game Over")
-	# Wait until the MessageTimer has counted down. // Wait a fixed timer instead.
-	await get_tree().create_timer(2.0).timeout
-	# await $MessageTimer.timeout
+	# Wait until the MessageTimer has counted down. // Wait a fixed timer instead (no).
+	# await get_tree().create_timer(2.0).timeout
+	await $MessageTimer.timeout
 	
 	$Message.text = "Gogol Jump"
 	$Message.show()
@@ -70,15 +70,19 @@ func _on_start_button_pressed():
 
 
 func _on_message_timer_timeout():
-	if start_pressed:
-		$Message.hide()
-	else:
-		$MessageTimer.start()	# Warning: this is very messy,
-								# as it creates many useless timers,
-								# might be an issue in the future.
-								# Possible fix: rework completely the message handling,
-								# have separate functions for the "press space" message.
-		# print("timemout")
+	$Message.hide()
+	
+	
+	
+#	if start_pressed:
+#		$Message.hide()
+#	else:
+#		$MessageTimer.start()	# Warning: this is very messy,
+#								# as it creates many useless timers,
+#								# might be an issue in the future.
+#								# Possible fix: rework completely the message handling,
+#								# have separate functions for the "press space" message.
+#		# print("timemout")
 
 
 

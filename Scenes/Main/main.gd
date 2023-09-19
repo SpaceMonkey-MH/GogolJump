@@ -40,11 +40,12 @@ func new_game():
 	$Ground.show()
 	$Ground.disabled = false
 	player.connect("on_moving_platform", _on_player_on_moving_platform)
-	player.connect("start_pressed", on_start_pressed)
+	# player.connect("start_pressed", on_start_pressed)
 	add_child(player)
 	
 	$HUD.update_score(score)
-	$HUD.show_message("Press Space \nto start jumping")
+	$HUD.show_message("Don't fall!")
+	# $HUD.show_message("Press Space \nto start jumping")
 
 
 func game_over():
@@ -52,7 +53,7 @@ func game_over():
 	$PlatformTimer.stop()
 	$MetaGameTimer.stop()
 	get_tree().call_group("moving_platforms", "queue_free")
-	$HUD.start_pressed = false
+	# $HUD.start_pressed = false
 	# $Player.hide()
 	# get_tree().reload_current_scene()
 
@@ -120,8 +121,8 @@ func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms an
 	# print(platform_duration, " ", $PlatformTimer.wait_time)
 
 
-func on_start_pressed():	# Connected via code.
-	$HUD.start_pressed = true
+#func on_start_pressed():	# Connected via code.
+#	$HUD.start_pressed = true
 
 
 
