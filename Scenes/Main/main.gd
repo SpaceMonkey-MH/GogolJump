@@ -123,3 +123,11 @@ func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms an
 func on_start_pressed():	# Connected via code.
 	$HUD.start_pressed = true
 
+
+
+func _on_hud_instructions():	# Connected to the instructions button.
+	$InstructionsHUD.show()
+
+
+func _on_instructions_hud_close_instructions():
+	$HUD.show()

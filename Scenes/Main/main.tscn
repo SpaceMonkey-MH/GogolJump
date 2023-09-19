@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=9 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3h1mcp7snohv" path="res://Scenes/Platform/moving_platform.tscn" id="4_bvxep"]
 [ext_resource type="PackedScene" uid="uid://bdc5630p27s30" path="res://Scenes/death_zone.tscn" id="5_i6nd2"]
 [ext_resource type="PackedScene" uid="uid://d2j5xf044aly4" path="res://Scenes/HUD/hud.tscn" id="6_wrhyc"]
+[ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 
 [sub_resource type="Curve2D" id="Curve2D_vw1py"]
 _data = {
@@ -66,7 +67,11 @@ position = Vector2(240, 696)
 
 [node name="HUD" parent="." instance=ExtResource("6_wrhyc")]
 
+[node name="InstructionsHUD" parent="." instance=ExtResource("7_68s3j")]
+
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="timeout" from="MetaGameTimer" to="." method="_on_meta_game_timer_timeout"]
+[connection signal="instructions" from="HUD" to="." method="_on_hud_instructions"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="close_instructions" from="InstructionsHUD" to="." method="_on_instructions_hud_close_instructions"]

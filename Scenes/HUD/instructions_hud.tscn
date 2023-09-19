@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4du3bttuqpsk"]
+
+[ext_resource type="Script" path="res://Scenes/HUD/instructions_hud.gd" id="1_v46e1"]
+
+[node name="InstructionsHUD" type="CanvasLayer"]
+script = ExtResource("1_v46e1")
+
+[node name="CloseInstructionsButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -111.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = "Close instructions"
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 50.0
+offset_right = 144.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "INSTRUCTIONS"
+
+[node name="Instructions" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -250.0
+offset_right = 236.5
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "In this game, 
+you control a round character that jumps automatically.
+
+You can use the left and right arrow keys to move 
+the character. This might prove trickier than it looks,
+because of how the inertia of the character works.
+
+Moving platforms appear at the top of the screen,
+and travel top to bottom to disappear at the bottom.
+
+Once you start jumping on platforms, the ground disappears;
+beware, for falling means game over!
+
+The goal is to earn points, which are obtained 
+when a platform reaches the bottom of the screeen,
+while avoiding falling.
+
+You cannot exit the screen by the top nor the sides,
+you bounce on them.
+
+This is it for the instructions, now good luck and have fun!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CloseInstructionsButton" to="." method="_on_close_instructions_button_pressed"]

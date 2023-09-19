@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # Notifies `Main` scene that the StartButton has been pressed.
 signal start_game
+signal instructions
 
 var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
 var score_hud	# Needed to get the score in this script.
@@ -35,6 +36,7 @@ func show_game_over():
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
+	$InstructionsButton.show()
 	# print("show_game_over")
 	update_highscore(score_hud)
 
@@ -63,6 +65,7 @@ func update_highscore(score):
 # Handles what happens when the StartButton is pressed.
 func _on_start_button_pressed():
 	$StartButton.hide()
+	$InstructionsButton.hide()
 	start_game.emit()	# Sends a signal to the main scene that the game should start.
 
 
@@ -99,3 +102,4 @@ func load_from_file():
 
 func _on_instructions_button_pressed():
 	hide()
+	instructions.emit()
