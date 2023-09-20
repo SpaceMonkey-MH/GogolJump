@@ -12,7 +12,7 @@ func _ready():
 #	$AnimatableBody2D/AnimatedSprite2D.animation = "platform1"
 	var platform_types = get_sprite_types()
 	$AnimatableBody2D/AnimatedSprite2D.play(platform_types[randi() % platform_types.size()])
-	print(platform_types)
+	# print(platform_types)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

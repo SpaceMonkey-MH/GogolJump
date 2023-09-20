@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3h1mcp7snohv"]
+[gd_scene load_steps=13 format=3 uid="uid://d3h1mcp7snohv"]
 
 [ext_resource type="Script" path="res://Scenes/Platform/moving_platform.gd" id="1_1u0m0"]
 [ext_resource type="Texture2D" uid="uid://dcm3nx2kasf2i" path="res://Sprites/Platform_2.png" id="2_6u345"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cky703mv68p3s" path="res://Sprites/Platform_4.png" id="4_a8tf4"]
 [ext_resource type="Texture2D" uid="uid://bltsrqpvlccji" path="res://Sprites/Platform_5.png" id="5_7tffv"]
 [ext_resource type="Texture2D" uid="uid://b7el336p18fpj" path="res://Sprites/Sparks_4.png" id="5_etw31"]
+[ext_resource type="Texture2D" uid="uid://76bj5nk5pkvg" path="res://Sprites/Platform_6.png" id="6_voeao"]
+[ext_resource type="Texture2D" uid="uid://0t3fo4w2wevi" path="res://Sprites/Platform_7.png" id="7_am1du"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fpfsb"]
 animations = [{
@@ -45,6 +47,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_voeao")
+}],
+"loop": true,
+"name": &"platform6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_am1du")
+}],
+"loop": true,
+"name": &"platform7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_oclsa")
 }, {
 "duration": 1.0,
@@ -72,7 +90,7 @@ script = ExtResource("1_1u0m0")
 position = Vector2(9.53674e-07, -7.15256e-07)
 scale = Vector2(0.198347, 0.1875)
 sprite_frames = SubResource("SpriteFrames_fpfsb")
-animation = &"platform5"
+animation = &"platform7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_0e75j")
