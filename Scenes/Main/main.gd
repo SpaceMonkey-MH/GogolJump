@@ -94,17 +94,21 @@ func _on_platform_timer_timeout():
 
 
 
-func _on_death_zone_body_entered(body):	# Triggered when the player enters the death zone 
+func _on_death_zone_body_entered(body):	# Triggered when the player enters the death zone.
 	# aka exits the screen (bottom)
 	if body.is_in_group("player"):
 		# print("dead : ", score)
 		game_over()
 
 
-func on_scored():
+func on_scored():	# Connected to scored signal in moving_platform.
 	if score_started:
 		score += 1
+		# Changes the color of the score label to GOLD for 0.5 second.
+		$HUD/ScoreLabel.set("theme_override_colors/font_color", Color.GOLD)
 		$HUD.update_score(score)
+		await get_tree().create_timer(0.5).timeout
+		$HUD/ScoreLabel.set("theme_override_colors/font_color", Color.BLACK)
 	
 
 func _on_player_on_moving_platform():	# Connected via code.
@@ -130,5 +134,5 @@ func _on_hud_instructions():	# Connected to the instructions button.
 	$InstructionsHUD.show()
 
 
-func _on_instructions_hud_close_instructions():
+func _on_instructions_hud_close_instructions():	# Connected to the close instructions button.
 	$HUD.show()

@@ -11,10 +11,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$CollisionShape2D.disabled = disabled
+	$CollisionShape2D.disabled = disabled	# This is used to make the ground disappear.
 	
 
-func start(pos):
+func start(pos):	# Handles what happens to the ground at the beginning of a game.
 	position = pos
 	show()
 
