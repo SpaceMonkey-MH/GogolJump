@@ -13,6 +13,7 @@ var platform_duration = 15.0
 func _ready():
 	$Ground.hide()
 	$HUD.update_highscore(score)
+	get_window().title = "Gogol Jump"
 	# new_game()
 
 

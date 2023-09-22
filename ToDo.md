@@ -2,8 +2,8 @@
 - Fix message telling to press space (it should stay until space has been pressed). // Done 
 	but there is an issue,	too many timers are created. // Obsolete
 - Change platform sprites. Use animations. // Semi-done.
-- Export on Linux/Android.
-- Make high score. // Done but not tested with export!
+- Export on Linux/Android. // Started.
+- Make high score. // Done but not tested with export! It work (for Windows)!
 - Sound?
 - Background.
 - Clean code (prints and useless crap). // Maybe.
@@ -11,7 +11,7 @@
 - Balance.
 - Add instructions to the game (a menu telling what to do). // Done.
 - Add animation for when a platform exits the screen (see RandomIdeas.md). // Done but ugly.
-- Rework this animation.
+- Rework this above animation.
 - Rework difficulty scaling?
 - Custom buttons.
 - Change color of score label on scored. // Done.
