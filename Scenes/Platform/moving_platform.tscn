@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3h1mcp7snohv"]
+[gd_scene load_steps=12 format=3 uid="uid://d3h1mcp7snohv"]
 
 [ext_resource type="Script" path="res://Scenes/Platform/moving_platform.gd" id="1_1u0m0"]
-[ext_resource type="Texture2D" uid="uid://dcm3nx2kasf2i" path="res://Sprites/Platform_2.png" id="2_6u345"]
 [ext_resource type="Texture2D" uid="uid://45kttq0jvco3" path="res://Sprites/Sparks_2.png" id="3_3nkgl"]
 [ext_resource type="Texture2D" uid="uid://dxulresvdrt5e" path="res://Sprites/Platform_3.png" id="3_3wiak"]
 [ext_resource type="Texture2D" uid="uid://b0or4flva42gg" path="res://Sprites/Sparks_3.png" id="3_oclsa"]
@@ -13,14 +12,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fpfsb"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_6u345")
-}],
-"loop": true,
-"name": &"platform2",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_3wiak")
@@ -90,7 +81,7 @@ script = ExtResource("1_1u0m0")
 position = Vector2(9.53674e-07, -7.15256e-07)
 scale = Vector2(0.198347, 0.1875)
 sprite_frames = SubResource("SpriteFrames_fpfsb")
-animation = &"platform7"
+animation = &"sparks"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_0e75j")

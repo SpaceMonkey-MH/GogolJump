@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2j5xf044aly4"]
+[gd_scene load_steps=6 format=3 uid="uid://d2j5xf044aly4"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_u533j"]
 
@@ -7,6 +7,12 @@ action = &"start_game"
 
 [sub_resource type="Shortcut" id="Shortcut_dbpri"]
 events = [SubResource("InputEventAction_b2sk5")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_yvrig"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_81w1l"]
+events = [SubResource("InputEventAction_yvrig")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_u533j")
@@ -70,9 +76,6 @@ offset_right = 100.0
 offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_hover_color = Color(0.12549, 0.513726, 0.231373, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.698039, 0.0823529, 0.2, 1)
 theme_override_font_sizes/font_size = 35
 shortcut = SubResource("Shortcut_dbpri")
 text = "Start Game"
@@ -92,6 +95,16 @@ offset_bottom = 41.0
 grow_horizontal = 0
 text = "Instructions"
 
+[node name="PauseButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 40.0
+offset_top = 28.0
+offset_right = 95.0
+offset_bottom = 59.0
+shortcut = SubResource("Shortcut_81w1l")
+text = "Pause"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="pressed" from="InstructionsButton" to="." method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

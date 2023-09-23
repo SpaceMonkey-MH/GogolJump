@@ -9,7 +9,8 @@ var score_hud	# Needed to get the score in this script.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$PauseButton.hide()
+#	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +27,7 @@ func show_message(text):
 
 # Function used to display the game-over message and reset the HUD to the start game state.
 func show_game_over():
+	$PauseButton.hide()
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down. // Wait a fixed timer instead (no).
 	# await get_tree().create_timer(2.0).timeout
@@ -66,6 +68,7 @@ func update_highscore(score):
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$InstructionsButton.hide()
+	$PauseButton.show()
 	start_game.emit()	# Sends a signal to the main scene that the game should start.
 
 
@@ -107,3 +110,8 @@ func load_from_file():
 func _on_instructions_button_pressed():
 	hide()
 	instructions.emit()
+
+
+func _on_pause_button_pressed():
+	get_tree().paused = not get_tree().paused
+	# print(get_tree().paused)

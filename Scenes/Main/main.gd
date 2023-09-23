@@ -20,6 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+#	if Input.is_action_just_pressed("start_jumping"):	# Testing.
+#		get_tree().paused = true
+#	if Input.is_action_just_pressed("ui_down"):	# Does not work because _process is not called during pause.
+#		get_tree().paused = false
+#		print("hello")
 #	if Input.is_action_just_pressed("ui_down"):	# This is just a test.
 #		get_tree().reload_current_scene()
 #	if Input.is_action_just_pressed("ui_up"):
@@ -103,7 +108,7 @@ func _on_death_zone_body_entered(body):	# Triggered when the player enters the d
 
 
 func on_scored():	# Connected to scored signal in moving_platform.
-	if score_started:
+	if score_started:	# This is to prevent score abusing by not jumping.
 		score += 1
 		# Changes the color of the score label to GOLD for 0.5 second.
 		$HUD/ScoreLabel.set("theme_override_colors/font_color", Color.GOLD)

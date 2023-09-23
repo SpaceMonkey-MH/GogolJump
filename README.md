@@ -7,4 +7,4 @@ de points possible.
 
 
 
-The current build uses Godot 4.1.
+The current build uses Godot 4.1.1.stable.
