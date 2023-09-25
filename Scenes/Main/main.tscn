@@ -44,19 +44,19 @@ curve = SubResource("Curve2D_vw1py")
 [node name="PlatformSpawnLocation" type="PathFollow2D" parent="PlatformSpawnPath"]
 position = Vector2(85.0355, -31)
 
-[node name="WallRight" parent="." instance=ExtResource("3_swhaf")]
+[node name="WallRight" parent="." groups=["wall_right"] instance=ExtResource("3_swhaf")]
 position = Vector2(493, 358)
 rotation = 1.5708
 scale = Vector2(8, 1)
 falls = false
 
-[node name="WallLeft" parent="." instance=ExtResource("3_swhaf")]
+[node name="WallLeft" parent="." groups=["wall_left"] instance=ExtResource("3_swhaf")]
 position = Vector2(-16, 358)
 rotation = 1.5708
 scale = Vector2(8, 1)
 falls = false
 
-[node name="Roof" parent="." instance=ExtResource("3_swhaf")]
+[node name="Roof" parent="." groups=["roof"] instance=ExtResource("3_swhaf")]
 position = Vector2(240, -30)
 scale = Vector2(5, 1)
 falls = false

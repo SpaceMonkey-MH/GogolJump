@@ -1,20 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3h1mcp7snohv"]
+[gd_scene load_steps=11 format=3 uid="uid://d3h1mcp7snohv"]
 
 [ext_resource type="Script" path="res://Scenes/Platform/moving_platform.gd" id="1_1u0m0"]
+[ext_resource type="Texture2D" uid="uid://culof0ns2dj48" path="res://Sprites/Platform_3_Tris.png" id="2_6lx68"]
 [ext_resource type="Texture2D" uid="uid://45kttq0jvco3" path="res://Sprites/Sparks_2.png" id="3_3nkgl"]
-[ext_resource type="Texture2D" uid="uid://dxulresvdrt5e" path="res://Sprites/Platform_3.png" id="3_3wiak"]
 [ext_resource type="Texture2D" uid="uid://b0or4flva42gg" path="res://Sprites/Sparks_3.png" id="3_oclsa"]
-[ext_resource type="Texture2D" uid="uid://cky703mv68p3s" path="res://Sprites/Platform_4.png" id="4_a8tf4"]
-[ext_resource type="Texture2D" uid="uid://bltsrqpvlccji" path="res://Sprites/Platform_5.png" id="5_7tffv"]
+[ext_resource type="Texture2D" uid="uid://ne3imd72tiow" path="res://Sprites/Platform_4_Tris.png" id="3_x5p2b"]
+[ext_resource type="Texture2D" uid="uid://dbu87bjq1o2s3" path="res://Sprites/Platform_5_Bis.png" id="4_tumi1"]
+[ext_resource type="Texture2D" uid="uid://dhdkid3fwjej8" path="res://Sprites/Platform_6_Bis.png" id="5_5h1ui"]
 [ext_resource type="Texture2D" uid="uid://b7el336p18fpj" path="res://Sprites/Sparks_4.png" id="5_etw31"]
-[ext_resource type="Texture2D" uid="uid://76bj5nk5pkvg" path="res://Sprites/Platform_6.png" id="6_voeao"]
-[ext_resource type="Texture2D" uid="uid://0t3fo4w2wevi" path="res://Sprites/Platform_7.png" id="7_am1du"]
+[ext_resource type="Texture2D" uid="uid://bfy3i1p32hl1k" path="res://Sprites/Platform_7_Bis.png" id="6_bglba"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fpfsb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3wiak")
+"texture": ExtResource("2_6lx68")
 }],
 "loop": true,
 "name": &"platform3",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_a8tf4")
+"texture": ExtResource("3_x5p2b")
 }],
 "loop": true,
 "name": &"platform4",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_7tffv")
+"texture": ExtResource("4_tumi1")
 }],
 "loop": true,
 "name": &"platform5",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_voeao")
+"texture": ExtResource("5_5h1ui")
 }],
 "loop": true,
 "name": &"platform6",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_am1du")
+"texture": ExtResource("6_bglba")
 }],
 "loop": true,
 "name": &"platform7",
@@ -67,9 +67,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e75j"]
-size = Vector2(72, 18)
-
 [node name="MovingPlatform" type="Node2D" groups=["moving_platforms"]]
 script = ExtResource("1_1u0m0")
 
@@ -83,8 +80,8 @@ scale = Vector2(0.198347, 0.1875)
 sprite_frames = SubResource("SpriteFrames_fpfsb")
 animation = &"sparks"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_0e75j")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+polygon = PackedVector2Array(-36, -8, -31, -13, 31, -13, 36, -8, 36, 7, 31, 13, -31, 13, -36, 7)
 one_way_collision = true
 
 [connection signal="screen_exited" from="AnimatableBody2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

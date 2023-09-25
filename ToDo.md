@@ -8,10 +8,16 @@
 - Add animation for when a platform exits the screen (see RandomIdeas.md). // Done but ugly.
 - Change color of score label on scored. // Done.
 - Pause button. // Done.
+- Make platform edges better (no weird bounces). // Done I think.
+- Make platforms thicker. // Done.
+- Export on Linux. // Done.
+- Change the way the character "bounces" on walls and roof. // Done.
+- Make text proportionnal to the window size. // Done I think, not sure about the result, 
+												// needs testing.
 
-###################################################################################################################
+######################################################################################################################################################
 
-- Export on Linux/Android. // Started.
+- Export on Android. 
 - Sound?
 - Clean code (prints and useless crap). // Maybe.
 - Finish comments and documentation.
@@ -19,3 +25,6 @@
 - Rework the platform animation.
 - Rework difficulty scaling?
 - Custom buttons.
+- Make first platforms closer to the ground so there is no waiting. 
+	Waiting could remain as a choice for beginners.
+- Fix window resize behavior.

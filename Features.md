@@ -8,3 +8,5 @@
 - Mort
 - Respawn
 - Scrolling vertical
+- Pause button
+- Instructions

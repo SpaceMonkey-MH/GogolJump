@@ -8,6 +8,12 @@ var lateral_thrust = Vector2(0, -400)
 # var torque = 20000
 var jump1 = false	# Whether the Player is on the floor (platforms and moving ones only).
 # var jump2 = false	# Whether the key to start jumping has been pressed.
+
+# These are used to handle the bouncing on the walls and roof. // This is extremelly ugly.
+var against_wall_left = false
+var against_wall_right = false
+var against_roof = false
+
 var on_moving_platform_count = 0
 
 # @export var start_pressed = false
@@ -17,6 +23,14 @@ func _integrate_forces(state):
 #	if jump1 and jump2:
 	if jump1:
 		state.apply_central_force(thrust)
+	# Make it so the Player bounces off of the walls and roof.
+	if against_roof:
+		print("roof")
+		state.apply_central_force(thrust.rotated(PI) / 4)
+	if against_wall_left:
+		state.apply_central_force(thrust.rotated(PI / 2) / 4)
+	if against_wall_right:
+		state.apply_central_force(thrust.rotated(-PI / 2) / 4)
 	else:
 		state.apply_force(Vector2())
 	var rotation_direction = 0
@@ -32,7 +46,7 @@ func _integrate_forces(state):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_contact_monitor(true)
-	set_max_contacts_reported(1000)  # Au pif value, to be changed
+	set_max_contacts_reported(10000)  # Au pif value, to be changed!!!
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,8 +68,19 @@ func _on_body_entered(body):
 		jump1 = true
 		on_moving_platform_count += 1
 		if on_moving_platform_count == 1:	# This is to prevent a crash in main (queue free on a null value).
-			on_moving_platform.emit()
+			on_moving_platform.emit()	# // I think this is irrelevant now.
 			# print("on_moving_platform for the first time")
+	# Allows for the detection of collision with walls and roof (for the bouncing).
+	if body.is_in_group("roof"):
+		print("against roof")
+		against_roof = true
+	if body.is_in_group("wall_right"):
+		print("against wall_right")
+		against_wall_right = true
+	if body.is_in_group("wall_left"):
+		print("against wall_left")
+		against_wall_left = true
+	
 
 # Another way to do this could be to use something like is_on_ground().
 # Apparently you can't with a RigidBody2D.
@@ -64,6 +89,9 @@ func _on_body_exited(_body):
 	# print("goodbye")
 	# await get_tree().create_timer(0.3).timeout	# This causes error when the character isn't jumping or maybe is on ground
 	jump1 = false
+	against_roof = false
+	against_wall_left = false
+	against_wall_right = false
 
 
 func start(pos):
