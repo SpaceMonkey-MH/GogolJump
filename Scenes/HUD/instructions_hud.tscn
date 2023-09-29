@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4du3bttuqpsk"]
+[gd_scene load_steps=4 format=3 uid="uid://b4du3bttuqpsk"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/instructions_hud.gd" id="1_v46e1"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_3n2ga"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_wt26o"]
+events = [SubResource("InputEventAction_3n2ga")]
 
 [node name="InstructionsHUD" type="CanvasLayer"]
 script = ExtResource("1_v46e1")
@@ -14,6 +20,7 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 41.0
 grow_horizontal = 0
+shortcut = SubResource("Shortcut_wt26o")
 text = "Close instructions"
 
 [node name="Title" type="Label" parent="."]
@@ -35,18 +42,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.5
-offset_top = -312.0
-offset_right = 236.5
-offset_bottom = 312.0
+offset_left = -236.0
+offset_top = -244.0
+offset_right = 237.0
+offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "
-
-
-
-In this game, 
+text = "In this game, 
 you control a round character that jumps automatically.
 
 You can use the left and right arrow keys to move 
@@ -55,7 +58,6 @@ because of how the inertia of the character works.
 
 Moving platforms appear at the top of the screen,
 and travel top to bottom to disappear at the bottom.
-
 Once you start jumping on platforms, the ground disappears;
 beware, for falling means game over!
 

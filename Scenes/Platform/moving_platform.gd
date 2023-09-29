@@ -13,6 +13,7 @@ func _ready():
 	var platform_types = get_sprite_types()
 	$AnimatableBody2D/AnimatedSprite2D.play(platform_types[randi() % platform_types.size()])
 	# print(platform_types)
+#	print(position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +37,7 @@ func get_sprite_types():
 	var types = $AnimatableBody2D/AnimatedSprite2D.sprite_frames.get_animation_names()
 	var types2 = []
 	for type in types:
-		if type != "sparks":
+		if type != "sparks" and type != "explosion" and type != "explosion2":
 			types2.append(type)
 	return types2
 
@@ -45,7 +46,9 @@ func get_sprite_types():
 func _on_visible_on_screen_notifier_2d_screen_exited():	# This works
 	scored.emit()
 	# $AnimatableBody2D/AnimatedSprite2D.animation = "sparks"
-	$AnimatableBody2D/AnimatedSprite2D.play("sparks")
+#	$AnimatableBody2D/AnimatedSprite2D.play("sparks")
+	# WARNING: this has an ugly result because the explosion animation isn't properly cut out!
+	$AnimatableBody2D/AnimatedSprite2D.play("explosion2")
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
 	# print("moving_platform_freed")

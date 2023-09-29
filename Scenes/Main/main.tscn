@@ -75,6 +75,20 @@ position = Vector2(240, 696)
 
 [node name="InstructionsHUD" parent="." instance=ExtResource("7_68s3j")]
 
+[node name="PlatformPositions" type="Node2D" parent="."]
+
+[node name="PlatformPos1" type="Marker2D" parent="PlatformPositions"]
+position = Vector2(314, 341)
+
+[node name="PlatformPos2" type="Marker2D" parent="PlatformPositions"]
+position = Vector2(330, 131)
+
+[node name="PlatformPos3" type="Marker2D" parent="PlatformPositions"]
+position = Vector2(97, 236)
+
+[node name="PlatformPos4" type="Marker2D" parent="PlatformPositions"]
+position = Vector2(118, 2)
+
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="timeout" from="MetaGameTimer" to="." method="_on_meta_game_timer_timeout"]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+'''This is not used, it was an alternative to the RigidBody2D but wasn't the tech of choice.'''
 #var velocity = Vector2(0, 250)  # The player's movement vector.
 
 # Called when the node enters the scene tree for the first time.

@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqi2j8xma4gsp"]
 
 [ext_resource type="Script" path="res://Scenes/Platform/platform.gd" id="1_ecord"]
-[ext_resource type="Texture2D" uid="uid://coydwxsre4d3s" path="res://Sprites/Platform_1.png" id="1_p3a58"]
+[ext_resource type="Texture2D" uid="uid://coydwxsre4d3s" path="res://Sprites/Platforms/Normal/Platform_1.png" id="2_5xwwl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ew7sc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_p3a58")
+"texture": ExtResource("2_5xwwl")
 }],
 "loop": true,
 "name": &"idle",

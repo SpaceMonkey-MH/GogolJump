@@ -7,6 +7,7 @@ extends Node
 var score = 0
 var score_started = false
 var platform_duration = 15.0
+var platform_positions
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +15,9 @@ func _ready():
 	$Ground.hide()
 	$HUD.update_highscore(score)
 	get_window().title = "Gogol Jump"
+	platform_positions = $PlatformPositions.get_children()
+#	platform_positions = [$PlatformPositions/PlatformPos1]
+#	print(platform_positions)
 	# new_game()
 
 
@@ -52,6 +56,29 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Don't fall!")
 	# $HUD.show_message("Press Space \nto start jumping")
+	
+	for pos in platform_positions:
+#		print(pos)
+		place_platform(pos.position)
+
+
+
+func place_platform(pos):
+	var platform = platform_scene.instantiate()
+	# Trying to fix the end animation for the starting platforms. It works!!
+	var offsetY = platform.offset.y - (pos.y + 31)
+	var offset = Vector2(0, offsetY)
+#	print(pos)
+	# Trying to fix the end animation for the starting platforms
+	platform.duration = (offsetY / 720) * platform_duration
+#	print(platform.position)
+	platform.position = pos
+	# Trying to fix the end animation for the starting platforms
+	platform.offset = offset
+	
+	platform.connect("scored", on_scored)
+	add_child(platform)
+	print(platform.position.y, " ", platform.offset)
 
 
 func game_over():

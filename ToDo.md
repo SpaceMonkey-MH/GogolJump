@@ -13,9 +13,9 @@
 - Export on Linux. // Done.
 - Change the way the character "bounces" on walls and roof. // Done.
 - Make text proportionnal to the window size. // Done I think, not sure about the result, 
-												// needs testing.
+												// needs testing. It's not great, it doesn't work correctly.
 
-######################################################################################################################################################
+#################################################################################################################
 
 - Export on Android. 
 - Sound?
@@ -27,4 +27,5 @@
 - Custom buttons.
 - Make first platforms closer to the ground so there is no waiting. 
 	Waiting could remain as a choice for beginners.
-- Fix window resize behavior.
+- Fix window resize behavior. // Should be hard.
+- Make it so the player can end the game from a menu.
