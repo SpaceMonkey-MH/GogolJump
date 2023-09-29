@@ -4,6 +4,7 @@ extends CanvasLayer
 signal start_game
 signal instructions
 signal paused
+signal unpaused
 
 # var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
 var score_hud	# Needed to get the score in this script.
@@ -114,6 +115,12 @@ func _on_instructions_button_pressed():
 
 
 func _on_pause_button_pressed():
+#	get_tree().paused = true
 	get_tree().paused = not get_tree().paused
-	paused.emit()
+	if get_tree().paused:
+		paused.emit()
+		$PauseButton.text = "Pause"
+	else:
+		unpaused.emit()
+		$PauseButton.text = "Unpause"
 	# print(get_tree().paused)

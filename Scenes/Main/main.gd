@@ -13,6 +13,7 @@ var platform_positions
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Ground.hide()
+	$PauseScreenHUD.hide()
 	$HUD.update_highscore(score)
 	get_window().title = "Gogol Jump"
 	platform_positions = $PlatformPositions.get_children()
@@ -78,7 +79,7 @@ func place_platform(pos):
 	
 	platform.connect("scored", on_scored)
 	add_child(platform)
-	print(platform.position.y, " ", platform.offset)
+#	print(platform.position.y, " ", platform.offset)
 
 
 func game_over():
@@ -169,3 +170,13 @@ func _on_hud_instructions():	# Connected to the instructions button.
 
 func _on_instructions_hud_close_instructions():	# Connected to the close instructions button.
 	$HUD.show()
+
+
+func _on_hud_paused():
+	$PauseScreenHUD.show()
+#	pass
+#	get_tree().change_scene_to_file("res://Scenes/HUD/pause_screen_hud.tscn")
+
+
+func _on_hud_unpaused():
+	$PauseScreenHUD.hide()
