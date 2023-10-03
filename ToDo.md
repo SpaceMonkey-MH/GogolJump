@@ -14,6 +14,11 @@
 - Change the way the character "bounces" on walls and roof. // Done.
 - Make text proportionnal to the window size. // Done I think, not sure about the result, 
 												// needs testing. It's not great, it doesn't work correctly.
+- Rework the platform animation. // Done.
+- Make it so the player can end the game from a menu. // Done.
+- Make first platforms closer to the ground so there is no waiting. // Done.
+	Waiting could remain as a choice for beginners. // Done.
+- Custom buttons. // Semi-done.
 
 #################################################################################################################
 
@@ -22,10 +27,5 @@
 - Clean code (prints and useless crap). // Maybe.
 - Finish comments and documentation.
 - Balance.
-- Rework the platform animation.
 - Rework difficulty scaling?
-- Custom buttons.
-- Make first platforms closer to the ground so there is no waiting. 
-	Waiting could remain as a choice for beginners.
 - Fix window resize behavior. // Should be hard.
-- Make it so the player can end the game from a menu.

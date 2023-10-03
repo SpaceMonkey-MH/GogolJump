@@ -7,13 +7,14 @@ extends Node
 var score = 0
 var score_started = false
 var platform_duration = 15.0
-var platform_positions
+var platform_positions	# Can't initialize it now because the nodes aren't ready.
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Ground.hide()
 	$PauseScreenHUD.hide()
+	$OptionsMenuHUD.hide()
 	$HUD.update_highscore(score)
 	get_window().title = "Gogol Jump"
 	platform_positions = $PlatformPositions.get_children()
@@ -58,9 +59,10 @@ func new_game():
 	$HUD.show_message("Don't fall!")
 	# $HUD.show_message("Press Space \nto start jumping")
 	
-	for pos in platform_positions:
-#		print(pos)
-		place_platform(pos.position)
+	if $OptionsMenuHUD.fast_start:
+		for pos in platform_positions:
+	#		print(pos)
+			place_platform(pos.position)
 
 
 
@@ -87,6 +89,9 @@ func game_over():
 	$PlatformTimer.stop()
 	$MetaGameTimer.stop()
 	get_tree().call_group("moving_platforms", "queue_free")
+#	print($Player)	# I don't know why it works this way, but it does, so heh.
+	$Player.queue_free()	# Without this using the EndButton would duplicate the Player.
+	$Ground.hide()
 	# $HUD.start_pressed = false
 	# $Player.hide()
 	# get_tree().reload_current_scene()
@@ -179,4 +184,17 @@ func _on_hud_paused():
 
 
 func _on_hud_unpaused():
+	$PauseScreenHUD.hide()
+
+
+func _on_hud_options():
+	$OptionsMenuHUD.show()
+
+
+func _on_options_menu_hud_closed():
+	$OptionsMenuHUD.hide()
+
+
+func _on_pause_screen_hud_game_ended():
+	game_over()
 	$PauseScreenHUD.hide()

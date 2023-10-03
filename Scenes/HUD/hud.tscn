@@ -1,6 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2j5xf044aly4"]
+[gd_scene load_steps=8 format=3 uid="uid://d2j5xf044aly4"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_u533j"]
+[ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_bak0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_451tg"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="InputEventAction" id="InputEventAction_b2sk5"]
 action = &"start_game"
@@ -26,6 +34,7 @@ offset_right = 21.5
 offset_bottom = 26.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
 theme_override_font_sizes/font_size = 50
 text = "Score: 0"
 horizontal_alignment = 1
@@ -41,6 +50,7 @@ offset_right = 77.5
 offset_bottom = 105.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
 theme_override_font_sizes/font_size = 30
 text = "Highscore:"
 horizontal_alignment = 1
@@ -59,6 +69,7 @@ offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
 theme_override_font_sizes/font_size = 60
 text = "Gogol Jump"
 horizontal_alignment = 1
@@ -76,7 +87,14 @@ offset_right = 100.0
 offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
 shortcut = SubResource("Shortcut_dbpri")
 text = "Start Game"
 
@@ -93,6 +111,13 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 41.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
 text = "Instructions"
 
 [node name="PauseButton" type="Button" parent="."]
@@ -101,10 +126,37 @@ offset_left = 40.0
 offset_top = 28.0
 offset_right = 95.0
 offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
 shortcut = SubResource("Shortcut_81w1l")
 text = "Pause"
+
+[node name="OptionsButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -103.0
+offset_top = 57.0
+offset_right = -18.0
+offset_bottom = 93.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bak0e")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
+text = "Options"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="pressed" from="InstructionsButton" to="." method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

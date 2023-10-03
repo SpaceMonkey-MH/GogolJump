@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=12 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2j5xf044aly4" path="res://Scenes/HUD/hud.tscn" id="6_wrhyc"]
 [ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 [ext_resource type="PackedScene" uid="uid://dq864rx68rvhi" path="res://Scenes/HUD/pause_screen_hud.tscn" id="9_qedv1"]
+[ext_resource type="PackedScene" uid="uid://c0621kt01sk2w" path="res://Scenes/HUD/options_menu_hud.tscn" id="10_54gas"]
 
 [sub_resource type="Curve2D" id="Curve2D_vw1py"]
 _data = {
@@ -92,11 +93,16 @@ position = Vector2(118, 2)
 
 [node name="PauseScreenHUD" parent="." instance=ExtResource("9_qedv1")]
 
+[node name="OptionsMenuHUD" parent="." instance=ExtResource("10_54gas")]
+
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="timeout" from="MetaGameTimer" to="." method="_on_meta_game_timer_timeout"]
 [connection signal="instructions" from="HUD" to="." method="_on_hud_instructions"]
+[connection signal="options" from="HUD" to="." method="_on_hud_options"]
 [connection signal="paused" from="HUD" to="." method="_on_hud_paused"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="unpaused" from="HUD" to="." method="_on_hud_unpaused"]
 [connection signal="close_instructions" from="InstructionsHUD" to="." method="_on_instructions_hud_close_instructions"]
+[connection signal="game_ended" from="PauseScreenHUD" to="." method="_on_pause_screen_hud_game_ended"]
+[connection signal="closed" from="OptionsMenuHUD" to="." method="_on_options_menu_hud_closed"]

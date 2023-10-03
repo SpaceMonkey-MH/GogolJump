@@ -12,18 +12,23 @@
 
 
 - For the instructions, too much text and hard to read because of background. 
-	I could be separated into small tutorial parts (in a Carrousel with a background, possibly with videos)
+	It could be separated into small tutorial parts (in a Carrousel with a background, possibly with videos)
 
-- Corner of buttons
-- Different font
+- Corner of buttons. // This is piece of cake apparently, but long.
+- Different font. // Done, but see if it is the good one.
 - Change background
 - Make background dynamically scroll with platforms. 
 	Procedural Google searches (generate, add, delete). Try both high and low pixellisation.
+	Have it done when score reaches 10 or so.
 - Make platform edges round.
-- Change animation of platforms exploding (steal from the Internet)
+- Change animation of platforms exploding (steal from the Internet). // Done.
 - Add animation for speed.
 - 15th October
 
 
 
 - Class inheritance!!!
+
+
+
+
