@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=13 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
 [ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background_1.png" id="4_2ch6y"]
+[ext_resource type="PackedScene" uid="uid://r6fsnlh2ty2d" path="res://Scenes/Main/background.tscn" id="4_7q5e1"]
 [ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="4_44phr"]
 [ext_resource type="PackedScene" uid="uid://d3h1mcp7snohv" path="res://Scenes/Platform/moving_platform.tscn" id="4_bvxep"]
 [ext_resource type="PackedScene" uid="uid://bdc5630p27s30" path="res://Scenes/death_zone.tscn" id="5_i6nd2"]
@@ -21,8 +22,10 @@ point_count = 2
 script = ExtResource("1_kdhwv")
 platform_scene = ExtResource("4_bvxep")
 player_scene = ExtResource("4_44phr")
+background_scene = ExtResource("4_7q5e1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
 offset_right = 480.0
 offset_bottom = 720.0
 texture = ExtResource("4_2ch6y")
@@ -95,6 +98,11 @@ position = Vector2(118, 2)
 
 [node name="OptionsMenuHUD" parent="." instance=ExtResource("10_54gas")]
 
+[node name="BackgroundStartPos" type="Marker2D" parent="."]
+position = Vector2(240, -50)
+
+[node name="BackgroundTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="timeout" from="MetaGameTimer" to="." method="_on_meta_game_timer_timeout"]
@@ -106,3 +114,4 @@ position = Vector2(118, 2)
 [connection signal="close_instructions" from="InstructionsHUD" to="." method="_on_instructions_hud_close_instructions"]
 [connection signal="game_ended" from="PauseScreenHUD" to="." method="_on_pause_screen_hud_game_ended"]
 [connection signal="closed" from="OptionsMenuHUD" to="." method="_on_options_menu_hud_closed"]
+[connection signal="timeout" from="BackgroundTimer" to="." method="_on_background_timer_timeout"]

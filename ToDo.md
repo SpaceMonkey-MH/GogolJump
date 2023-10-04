@@ -29,3 +29,5 @@
 - Balance.
 - Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
+- Implement Notes.md.
+- Reduce bounce on walls ?

@@ -30,6 +30,7 @@ func start_tween():
 	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	# tween.set_loops().set_parallel(false)
 	tween.tween_property($AnimatableBody2D, "position", offset, duration)
+#	print("hello")
 
 
 # Function used to withdraw the end animation from the regular ones.

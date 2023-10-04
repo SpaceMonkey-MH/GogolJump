@@ -4,10 +4,18 @@ extends Node
 @export var platform_scene: PackedScene
 # @export var ground_scene: PackedScene
 @export var player_scene: PackedScene
+@export var background_scene: PackedScene
 var score = 0
 var score_started = false
 var platform_duration = 15.0
 var platform_positions	# Can't initialize it now because the nodes aren't ready.
+var background_duration = 10	# Time for a background sprite to reach the bottom; reverse of speed.
+var background_height = 193	# Height of a background sprite (possibly useless).
+var background_offset = Vector2(0, 820)	# Height of the screen + 100.
+# Rate for the appearance of the background sprites. t = h * T / H.
+var background_rate = background_height * background_duration / background_offset.y
+var score_goal = 2	# Score to reach to start the moving background.
+var score_reached = false	# Whether the score need to start the moving background has been reached.
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,11 +29,18 @@ func _ready():
 #	platform_positions = [$PlatformPositions/PlatformPos1]
 #	print(platform_positions)
 	# new_game()
+	print(background_rate)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if score >= score_goal and not score_reached:
+		$BackgroundTimer.wait_time = background_rate
+		$BackgroundTimer.start()
+		score_reached = true
+#		print("hello")
+		
+		
 #	if Input.is_action_just_pressed("start_jumping"):	# Testing.
 #		get_tree().paused = true
 #	if Input.is_action_just_pressed("ui_down"):	# Does not work because _process is not called during pause.
@@ -40,6 +55,7 @@ func _process(_delta):
 func new_game():
 	# Resetting the values for a new game.
 	score = 0
+	score_reached = false
 	score_started = false
 	platform_duration = 15.0
 	$PlatformTimer.wait_time = 3.0
@@ -63,6 +79,7 @@ func new_game():
 		for pos in platform_positions:
 	#		print(pos)
 			place_platform(pos.position)
+	
 
 
 
@@ -88,6 +105,7 @@ func game_over():
 	$HUD.show_game_over()
 	$PlatformTimer.stop()
 	$MetaGameTimer.stop()
+	$BackgroundTimer.stop()
 	get_tree().call_group("moving_platforms", "queue_free")
 #	print($Player)	# I don't know why it works this way, but it does, so heh.
 	$Player.queue_free()	# Without this using the EndButton would duplicate the Player.
@@ -198,3 +216,17 @@ func _on_options_menu_hud_closed():
 func _on_pause_screen_hud_game_ended():
 	game_over()
 	$PauseScreenHUD.hide()
+
+
+func animate_background():
+	var background = background_scene.instantiate()
+	background.position = $BackgroundStartPos.position
+	background.duration = background_duration
+	background.offset = background_offset
+	add_child(background)
+
+
+func _on_background_timer_timeout():
+	animate_background()
+#	print("hello")
+	

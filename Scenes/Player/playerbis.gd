@@ -28,13 +28,13 @@ func _integrate_forces(state):
 	# Make it so the Player bounces off of the walls and roof.
 	if against_roof:
 #		print("roof")
-		state.apply_central_force(thrust.rotated(PI) / 4)
+		state.apply_central_force(thrust.rotated(PI) / 8)
 #		against_roof = false	#thrust
 	if against_wall_left:
-		state.apply_central_force(thrust.rotated(PI / 2) / 4)
+		state.apply_central_force(thrust.rotated(PI / 2) / 8)
 #		against_wall_left = false	#thrust
 	if against_wall_right:
-		state.apply_central_force(thrust.rotated(-PI / 2) / 4)
+		state.apply_central_force(thrust.rotated(-PI / 2) / 8)
 #		against_wall_right = false	#thrust
 	else:
 		state.apply_force(Vector2())

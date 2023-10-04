@@ -14,15 +14,15 @@
 - For the instructions, too much text and hard to read because of background. 
 	It could be separated into small tutorial parts (in a Carrousel with a background, possibly with videos)
 
-- Corner of buttons. // This is piece of cake apparently, but long.
+- Corner of buttons. // This is piece of cake apparently, but long. So partically done, see if this is correct.
 - Different font. // Done, but see if it is the good one.
 - Change background
 - Make background dynamically scroll with platforms. 
 	Procedural Google searches (generate, add, delete). Try both high and low pixellisation.
 	Have it done when score reaches 10 or so.
-- Make platform edges round.
+- Make platform edges round. // Nope.
 - Change animation of platforms exploding (steal from the Internet). // Done.
-- Add animation for speed.
+- Add animation for speed. // Nope.
 - 15th October
 
 
