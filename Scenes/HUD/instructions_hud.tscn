@@ -33,6 +33,11 @@ events = [SubResource("InputEventAction_3n2ga")]
 [node name="InstructionsHUD" type="CanvasLayer"]
 script = ExtResource("1_v46e1")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.737255, 0.619608, 0.203922, 1)
+
 [node name="CloseInstructionsButton" type="Button" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
@@ -68,45 +73,142 @@ text = "INSTRUCTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Instructions" type="Label" parent="."]
+[node name="Instructions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 109.0
+offset_right = 480.0
+offset_bottom = 720.0
+
+[node name="Instruction1" type="Label" parent="Instructions"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.0
-offset_top = -244.0
-offset_right = 237.0
-offset_bottom = 354.0
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_n0sjr")
 text = "In this game, 
-you control a round character that jumps automatically.
+you control a round character that jumps automatically."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-You can use the left and right arrow keys to move 
+[node name="Instruction2" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You can use the left and right arrow keys to move 
 the character. This might prove trickier than it looks,
-because of how the inertia of the character works.
+because of how the inertia of the character works."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-Moving platforms appear at the top of the screen,
+[node name="Instruction3" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Moving platforms appear at the top of the screen,
 and travel top to bottom to disappear at the bottom.
 
 Once you start jumping on platforms, the ground disappears;
-beware, for falling means game over!
+beware, for falling means game over!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-The goal is to earn score points, which are obtained 
+[node name="Instruction4" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The goal is to earn score points, which are obtained 
 when a platform reaches the bottom of the screeen,
 while avoiding falling.
 
 You cannot exit the screen by the top nor the sides,
-you bounce on them.
-
-Note: you can press Enter instead of clicking 
-on the Start Game Button, as well as P for the Pause!
-
-This is it for the instructions, now good luck and have fun!"
+you bounce on them."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Instruction5" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Note: you can press Enter instead of clicking 
+on the Start Game Button, as well as P for the Pause!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction6" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is it for the instructions, now good luck and have fun!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 325.0
+offset_top = 528.0
+offset_right = 400.0
+offset_bottom = 559.0
+text = "Next"
+
+[node name="PreviousButton" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 528.0
+offset_right = 155.0
+offset_bottom = 559.0
+text = "Previous"
+
 [connection signal="pressed" from="CloseInstructionsButton" to="." method="_on_close_instructions_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]

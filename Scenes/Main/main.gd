@@ -29,7 +29,7 @@ func _ready():
 #	platform_positions = [$PlatformPositions/PlatformPos1]
 #	print(platform_positions)
 	# new_game()
-	print(background_rate)
+#	print(background_rate)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -23,6 +23,7 @@ func _process(delta):
 
 func _on_end_button_pressed():
 	# This method does not save the score (I think).
+	# This is not exactly satisfying because it doesn't show the Game Over. // Maybe it shouldn't ?
 #	get_tree().change_scene_to_file("res://Scenes/Main/main.tscn")
 
 	game_ended.emit()
