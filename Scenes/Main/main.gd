@@ -10,8 +10,8 @@ var score_started = false
 var platform_duration = 15.0
 var platform_positions	# Can't initialize it now because the nodes aren't ready.
 var background_duration = 10	# Time for a background sprite to reach the bottom; reverse of speed.
-var background_height = 193	# Height of a background sprite (possibly useless).
-var background_offset = Vector2(0, 820)	# Height of the screen + 100.
+var background_height = 93	# Height of a background sprite.
+var background_offset = Vector2(0, 720 + 100)	# Height of the screen + 100.
 # Rate for the appearance of the background sprites. t = h * T / H.
 var background_rate = background_height * background_duration / background_offset.y
 var score_goal = 2	# Score to reach to start the moving background.
