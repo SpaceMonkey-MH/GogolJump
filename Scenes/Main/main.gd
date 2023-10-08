@@ -9,12 +9,12 @@ var score = 0
 var score_started = false
 var platform_duration = 15.0
 var platform_positions	# Can't initialize it now because the nodes aren't ready.
-var background_duration = 10	# Time for a background sprite to reach the bottom; reverse of speed.
-var background_height = 93	# Height of a background sprite.
-var background_offset = Vector2(0, 720 + 100)	# Height of the screen + 100.
-# Rate for the appearance of the background sprites. t = h * T / H.
-var background_rate = background_height * background_duration / background_offset.y
-var score_goal = 2	# Score to reach to start the moving background.
+var background_duration = 15	# Time for a background sprite to reach the bottom; reverse of speed.
+var background_height = 108	# Height of a background sprite.
+var background_offset = Vector2(0, 720 + 120)	# Height of the screen + 120.
+# Cooldown for the appearance of the background sprites. t = h * T / H. Apparently this doesn't work well.
+var background_cooldown = background_height * background_duration / background_offset.y - 0.1
+var score_goal = 10	# Score to reach to start the moving background.
 var score_reached = false	# Whether the score need to start the moving background has been reached.
 
 
@@ -35,8 +35,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if score >= score_goal and not score_reached:
-		$BackgroundTimer.wait_time = background_rate
+		$BackgroundTimer.wait_time = background_cooldown
 		$BackgroundTimer.start()
+#		print($BackgroundTimer.wait_time)
 		score_reached = true
 #		print("hello")
 		

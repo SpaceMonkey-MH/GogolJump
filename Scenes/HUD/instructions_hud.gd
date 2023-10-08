@@ -16,7 +16,7 @@ func _ready():
 #	$Instructions/Instructions.add_theme_font_size_override("font_size", font_size)
 	instructions = $Instructions.get_children()
 	for instruction in instructions:
-		instruction.add_theme_font_size_override("font_size", font_size)
+		instruction.add_theme_font_size_override("font_size", font_size)	# Maybe useless.
 		instruction.hide()
 	
 	$PreviousButton.disabled = true
@@ -70,7 +70,7 @@ func _on_next_button_pressed():
 	$PreviousButton.disabled = false
 	if pane_count >= max_panes - 1:
 		$NextButton.disabled = true
-	print("next :", pane_count)
+#	print("next :", pane_count)
 	instructions[pane_count].show()
 
 
@@ -80,5 +80,5 @@ func _on_previous_button_pressed():
 	$NextButton.disabled = false
 	if pane_count <= 0 :
 		$PreviousButton.disabled = true
-	print("previous :", pane_count)
+#	print("previous :", pane_count)
 	instructions[pane_count].show()

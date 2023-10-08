@@ -12,17 +12,18 @@
 
 
 - For the instructions, too much text and hard to read because of background. 
-	It could be separated into small tutorial parts (in a Carrousel with a background, possibly with videos)
+	It could be separated into small tutorial parts 
+	(in a Carrousel with a background, possibly with videos). // Done.
 
 - Corner of buttons. // This is piece of cake apparently, but long. So partially done, see if this is correct.
 - Different font. // Done, but see if it is the good one.
 - Change background
 - Make background dynamically scroll with platforms. // Done.
-	Procedural Google searches (generate, add, delete). Try both high and low pixellisation. // Started.
+	Procedural Google searches (generate, add, delete). Try both high and low pixellisation. // Done.
 	Have it done when score reaches 10 or so. // Done.
-- Make platform edges round. // Nope.
+- Make platform edges round. // Nope. 
 - Change animation of platforms exploding (steal from the Internet). // Done.
-- Add animation for speed. // Nope.
+- Add animation for speed. // Nope. This is too much work for a predictively poor result.
 - 15th October
 
 

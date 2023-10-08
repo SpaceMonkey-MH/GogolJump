@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://r6fsnlh2ty2d"]
+[gd_scene load_steps=6 format=3 uid="uid://r6fsnlh2ty2d"]
 
 [ext_resource type="Script" path="res://Scenes/Main/background.gd" id="1_kcjlh"]
-[ext_resource type="Texture2D" uid="uid://coydwxsre4d3s" path="res://Sprites/Platforms/Normal/Platform_1.png" id="2_jpf2g"]
-[ext_resource type="Texture2D" uid="uid://dcm3nx2kasf2i" path="res://Sprites/Platforms/Normal/Platform_2.png" id="3_1wtts"]
+[ext_resource type="Texture2D" uid="uid://du2eihswwy5k6" path="res://Sprites/Background/Background_Sprite_1.png" id="2_uujoh"]
+[ext_resource type="Texture2D" uid="uid://d318c00qdrd3k" path="res://Sprites/Background/Background_Sprite_2.png" id="3_c64mw"]
+[ext_resource type="Texture2D" uid="uid://dfoe802rg4gku" path="res://Sprites/Background/Background_Sprite_3.png" id="4_hppv4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ya4a7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jpf2g")
+"texture": ExtResource("2_uujoh")
 }],
 "loop": true,
 "name": &"Sprite1",
@@ -16,10 +17,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_1wtts")
+"texture": ExtResource("3_c64mw")
 }],
 "loop": true,
 "name": &"Sprite2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hppv4")
+}],
+"loop": true,
+"name": &"Sprite3",
 "speed": 5.0
 }]
 
@@ -31,7 +40,7 @@ script = ExtResource("1_kcjlh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
 sprite_frames = SubResource("SpriteFrames_ya4a7")
-animation = &"Sprite2"
+animation = &"Sprite3"
 
 [node name="PlatformDurationTimer" type="Timer" parent="."]
 one_shot = true

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
-[ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background_1.png" id="4_2ch6y"]
 [ext_resource type="PackedScene" uid="uid://r6fsnlh2ty2d" path="res://Scenes/Main/background.tscn" id="4_7q5e1"]
 [ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="4_44phr"]
 [ext_resource type="PackedScene" uid="uid://d3h1mcp7snohv" path="res://Scenes/Platform/moving_platform.tscn" id="4_bvxep"]
 [ext_resource type="PackedScene" uid="uid://bdc5630p27s30" path="res://Scenes/Main/death_zone.tscn" id="5_i6nd2"]
+[ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background/Background_1.png" id="5_k3f5i"]
 [ext_resource type="PackedScene" uid="uid://d2j5xf044aly4" path="res://Scenes/HUD/hud.tscn" id="6_wrhyc"]
 [ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 [ext_resource type="PackedScene" uid="uid://dq864rx68rvhi" path="res://Scenes/HUD/pause_screen_hud.tscn" id="9_qedv1"]
@@ -28,7 +28,7 @@ background_scene = ExtResource("4_7q5e1")
 z_index = -2
 offset_right = 480.0
 offset_bottom = 720.0
-texture = ExtResource("4_2ch6y")
+texture = ExtResource("5_k3f5i")
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 550)

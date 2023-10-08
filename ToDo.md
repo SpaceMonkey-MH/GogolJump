@@ -19,6 +19,8 @@
 - Make first platforms closer to the ground so there is no waiting. // Done.
 	Waiting could remain as a choice for beginners. // Done.
 - Custom buttons. // Semi-done.
+- Implement Notes.md. // Done.
+- Reduce bounce on walls ? // Done.
 
 #################################################################################################################
 
@@ -29,5 +31,3 @@
 - Balance.
 - Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
-- Implement Notes.md.
-- Reduce bounce on walls ?
