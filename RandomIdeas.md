@@ -17,4 +17,4 @@
 - Make the character into a circle so that it is easier to control (on bounces). // Maybe.
 
 - For the bouncing on walls and roof, check collisions of Player and then check if it is wall left, right or roof
-	and give the player a push in the corresponding direction.
+	and give the player a push in the corresponding direction. // Done.

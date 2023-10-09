@@ -8,11 +8,12 @@ extends Node
 var score = 0
 var score_started = false
 var platform_duration = 15.0
-var platform_positions	# Can't initialize it now because the nodes aren't ready.
+@onready var platform_positions = $PlatformPositions.get_children()	# Initializing it now.
 var background_duration = 15	# Time for a background sprite to reach the bottom; reverse of speed.
 var background_height = 108	# Height of a background sprite.
 var background_offset = Vector2(0, 720 + 120)	# Height of the screen + 120.
-# Cooldown for the appearance of the background sprites. t = h * T / H. Apparently this doesn't work well.
+# Cooldown for the appearance of the background sprites. t = h * T / H.
+# Apparently this doesn't work well, so I added a magic number.
 var background_cooldown = background_height * background_duration / background_offset.y - 0.1
 var score_goal = 10	# Score to reach to start the moving background.
 var score_reached = false	# Whether the score need to start the moving background has been reached.
@@ -25,7 +26,7 @@ func _ready():
 	$OptionsMenuHUD.hide()
 	$HUD.update_highscore(score)
 	get_window().title = "Gogol Jump"
-	platform_positions = $PlatformPositions.get_children()
+#	platform_positions = $PlatformPositions.get_children()
 #	platform_positions = [$PlatformPositions/PlatformPos1]
 #	print(platform_positions)
 	# new_game()
@@ -114,6 +115,7 @@ func game_over():
 	# $HUD.start_pressed = false
 	# $Player.hide()
 	# get_tree().reload_current_scene()
+#	$HUD.update_highscore(score)	# Not needed.
 
 
 
@@ -129,7 +131,7 @@ func _on_platform_timer_timeout():
 	platform_spawn_location.progress_ratio = randi()
 	
 	# Set the platform's direction perpendicular to the path direction.
-	var direction = platform_spawn_location.rotation + PI / 2
+#	var direction = platform_spawn_location.rotation + PI / 2
 	
 	# Set the platform's position to a random location.
 	# print(platform_spawn_location.position)

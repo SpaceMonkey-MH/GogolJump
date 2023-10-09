@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq864rx68rvhi"]
+[gd_scene load_steps=4 format=3 uid="uid://dq864rx68rvhi"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/pause_screen_hud.gd" id="1_o0itb"]
 [ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_t7hva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sw80x"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [node name="PauseScreenHUD" type="CanvasLayer"]
 process_mode = 2
@@ -16,6 +23,7 @@ offset_top = 167.0
 offset_right = 199.0
 offset_bottom = 253.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_t7hva")
 theme_override_font_sizes/font_size = 60
 text = "Game paused"
@@ -37,6 +45,11 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_t7hva")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_sw80x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sw80x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sw80x")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sw80x")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sw80x")
 text = "End Game"
 
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_pressed"]

@@ -26,8 +26,12 @@
 
 - Export on Android. 
 - Sound?
-- Clean code (prints and useless crap). // Maybe.
+- Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean it.
 - Finish comments and documentation.
 - Balance.
 - Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
+- Fix explosion animation borders.
+- Make options stay in save.
+- New highscore animation.
+- Create theme resource (beuh...).

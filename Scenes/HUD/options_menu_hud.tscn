@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0621kt01sk2w"]
+[gd_scene load_steps=5 format=3 uid="uid://c0621kt01sk2w"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/options_menu_hud.gd" id="1_sravi"]
+[ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background/Background_1.png" id="2_iha7j"]
 [ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_mborg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5otqf"]
@@ -13,10 +14,10 @@ corner_radius_bottom_left = 40
 [node name="OptionsMenuHUD" type="CanvasLayer"]
 script = ExtResource("1_sravi")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 offset_right = 480.0
 offset_bottom = 720.0
-color = Color(0.564706, 0.27451, 0.341176, 1)
+texture = ExtResource("2_iha7j")
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5

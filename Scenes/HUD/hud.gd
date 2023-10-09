@@ -9,6 +9,7 @@ signal options	# Signal for when the OptionsButton is pressed.
 
 # var start_pressed = false	# Whether the start jumping button has been pressed (space bar).
 var score_hud	# Needed to get the score in this script.
+const HIGHSCORE_FILE = "user://highscore.dat"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,13 +44,13 @@ func show_game_over():
 	$StartButton.show()
 	$InstructionsButton.show()
 	$OptionsButton.show()
-	# print("show_game_over")
+#	print("show_game_over")
 	update_highscore(score_hud)
 
 
 func update_score(score):
 	score_hud = score
-	$ScoreLabel.text = "Score: " + str(score)
+	$ScoreLabel.text = "Score: %s" % score
 	
 	
 # WARNING: NOT HANDLING THE CASE WHERE THE FILE IS EMPTY. // I think it does now.
@@ -60,11 +61,13 @@ func update_highscore(score):
 	if highscore_string == "":	# Testing if the string is empty before changing its type to int.
 		highscore = 0	# Default value
 	else:
-		highscore = int(highscore_string)	# Casting to an int.
-	# print(highscore, " ", score)
+		highscore = highscore_string.to_int()	# Casting to an int.
+#	print(highscore, " ", score)
 	highscore_string = str(max(highscore, score))	# Taking the max between the score and the highscore.
+#	print(highscore_string)
 	save_to_file(highscore_string)	# Saving highscore.
 	$HighScoreLabel.text = "Highscore: " + highscore_string	# Displaying highscore.
+#	print("hello")
 	
 
 
@@ -96,7 +99,7 @@ func _on_message_timer_timeout():
 
 # Function that saves content to a fixed file.
 func save_to_file(content):
-	var file = FileAccess.open("user://highscore.dat", FileAccess.WRITE)
+	var file = FileAccess.open(HIGHSCORE_FILE, FileAccess.WRITE)
 	file.store_string(content)
 
 
@@ -104,9 +107,9 @@ func save_to_file(content):
 # Function that returns the content loaded from a fixed file.
 func load_from_file():
 	var content = ""
-	var file = FileAccess.open("user://highscore.dat", FileAccess.READ)
-	var file_exists = FileAccess.file_exists("user://highscore.dat")
+	var file_exists = FileAccess.file_exists(HIGHSCORE_FILE)
 	if file_exists:
+		var file = FileAccess.open(HIGHSCORE_FILE, FileAccess.READ)
 		content = file.get_as_text()
 	# print("c: ", content)
 	return content
