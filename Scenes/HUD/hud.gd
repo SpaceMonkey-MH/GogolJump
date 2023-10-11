@@ -125,10 +125,10 @@ func _on_pause_button_pressed():
 	get_tree().paused = not get_tree().paused
 	if get_tree().paused:
 		paused.emit()
-		$PauseButton.text = "Pause"
+		$PauseButton.text = "Unpause"
 	else:
 		unpaused.emit()
-		$PauseButton.text = "Unpause"
+		$PauseButton.text = "Pause"
 	# print(get_tree().paused)
 
 
