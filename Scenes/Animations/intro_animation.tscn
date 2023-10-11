@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvj1x35pc02qc"]
 
-[ext_resource type="Script" path="res://Scenes/intro_animation.gd" id="1_5hvyw"]
-[ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="1_req2q"]
-[ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="2_5xusv"]
+[ext_resource type="Script" path="res://Scenes/Animations/intro_animation.gd" id="1_6oc2c"]
+[ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="2_hk3js"]
+[ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="3_lio5b"]
 
 [sub_resource type="Animation" id="Animation_mylk3"]
 resource_name = "Intro1"
@@ -68,11 +68,11 @@ _data = {
 libraries = {
 "": SubResource("AnimationLibrary_e2nkl")
 }
-script = ExtResource("1_5hvyw")
+script = ExtResource("1_6oc2c")
 
-[node name="Platform" parent="." instance=ExtResource("1_req2q")]
+[node name="Platform" parent="." instance=ExtResource("2_hk3js")]
 position = Vector2(240, 692)
 scale = Vector2(6, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_5xusv")]
+[node name="Player" parent="." instance=ExtResource("3_lio5b")]
 position = Vector2(-27, 621)

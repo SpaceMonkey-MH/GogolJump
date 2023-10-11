@@ -23,6 +23,10 @@
 - Reduce bounce on walls ? // Done.
 - Change background theme to light. Make it as an option? // Done.
 - Make shortcuts for buttons. // Done.
+- Add intro animation. // Done.
+- Add more background sprites. // Done.
+- Make options stay in save. // Done.
+- New highscore animation. // Done more or less.
 
 ##################################################################################################
 
@@ -34,11 +38,11 @@
 - Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
 - Fix explosion animation borders.
-- Make options stay in save.
-- New highscore animation.
 - Create theme resource (beuh...).
-- Make border of character and platforms black so it's more visible.
+- Make border of character and platforms black so it's more visible. Trying something with shader,
+	it seems ok but it won't work on platforms as it is (I think, maybe I'll try. I don't like the result),
+	to make it work I would have to change the way the platform end animation works 
+	(separate the explosion animation from the other ones). This is either a by hand angle or a quit.
 - Make story.
 - Change ground sprite.
 - Make demo?
-- Add intro animation.

@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://buett1qyui77u"]
+[gd_scene load_steps=7 format=3 uid="uid://buett1qyui77u"]
 
+[ext_resource type="Shader" path="res://Scenes/Player/playerbis.gdshader" id="1_a7h6e"]
 [ext_resource type="Script" path="res://Scenes/Player/playerbis.gd" id="1_j6ul4"]
 [ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="2_lqd3w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2pig"]
+shader = ExtResource("1_a7h6e")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 3.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndhsx"]
 animations = [{
@@ -22,6 +28,7 @@ height = 56.0
 script = ExtResource("1_j6ul4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_e2pig")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ndhsx")
 animation = &"walk"
