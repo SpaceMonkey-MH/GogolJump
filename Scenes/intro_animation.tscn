@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvj1x35pc02qc"]
+
+[ext_resource type="Script" path="res://Scenes/intro_animation.gd" id="1_5hvyw"]
+[ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="1_req2q"]
+[ext_resource type="PackedScene" uid="uid://buett1qyui77u" path="res://Scenes/Player/playerbis.tscn" id="2_5xusv"]
+
+[sub_resource type="Animation" id="Animation_mylk3"]
+resource_name = "Intro1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroAnimation/Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-27, 621), Vector2(240, 621)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroAnimation/Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_op28b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroAnimation/Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, 665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroAnimation/Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2nkl"]
+_data = {
+"Intro1": SubResource("Animation_mylk3"),
+"RESET": SubResource("Animation_op28b")
+}
+
+[node name="IntroAnimation" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_e2nkl")
+}
+script = ExtResource("1_5hvyw")
+
+[node name="Platform" parent="." instance=ExtResource("1_req2q")]
+position = Vector2(240, 692)
+scale = Vector2(6, 3)
+
+[node name="Player" parent="." instance=ExtResource("2_5xusv")]
+position = Vector2(-27, 621)

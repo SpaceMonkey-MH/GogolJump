@@ -1,8 +1,8 @@
 extends AnimatableBody2D
 
 
-@export var falls = true
-@export var disabled = false
+var falls = true	# Idk what this is used for.
+var disabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -5,18 +5,25 @@ extends Node
 # @export var ground_scene: PackedScene
 @export var player_scene: PackedScene
 @export var background_scene: PackedScene
+@export var intro_animation: PackedScene
+
+
+
+var game_ended = false	# Whether the game has ended or not (game over reached).
 var score = 0
 var score_started = false
 var platform_duration = 15.0
 @onready var platform_positions = $PlatformPositions.get_children()	# Initializing it now.
-var background_duration = 15	# Time for a background sprite to reach the bottom; reverse of speed.
+# Time for a background sprite to reach the bottom; reverse of speed.
+var background_duration = 15	
 var background_height = 108	# Height of a background sprite.
 var background_offset = Vector2(0, 720 + 120)	# Height of the screen + 120.
 # Cooldown for the appearance of the background sprites. t = h * T / H.
 # Apparently this doesn't work well, so I added a magic number.
 var background_cooldown = background_height * background_duration / background_offset.y - 0.1
-var score_goal = 10	# Score to reach to start the moving background.
-var score_reached = false	# Whether the score need to start the moving background has been reached.
+var score_goal = 1	# Score to reach to start the moving background.
+# Whether the score need to start the moving background has been reached.
+var score_reached = false	
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +33,16 @@ func _ready():
 	$OptionsMenuHUD.hide()
 	$HUD.update_highscore(score)
 	get_window().title = "Gogol Jump"
+	
+	
+#	$IntroAnimation.play("Intro1")
+#	await get_tree().create_timer(3.0).timeout
+#	$IntroAnimation.stop()
+#	$IntroAnimation.queue_free()
+#	print("hello")
+#	$IntroAnimation.play("RESET")
+
+
 #	platform_positions = $PlatformPositions.get_children()
 #	platform_positions = [$PlatformPositions/PlatformPos1]
 #	print(platform_positions)
@@ -45,7 +62,8 @@ func _process(_delta):
 		
 #	if Input.is_action_just_pressed("start_jumping"):	# Testing.
 #		get_tree().paused = true
-#	if Input.is_action_just_pressed("ui_down"):	# Does not work because _process is not called during pause.
+	# Does not work because _process is not called during pause.
+#	if Input.is_action_just_pressed("ui_down"):	
 #		get_tree().paused = false
 #		print("hello")
 #	if Input.is_action_just_pressed("ui_down"):	# This is just a test.
@@ -59,8 +77,28 @@ func new_game():
 	score = 0
 	score_reached = false
 	score_started = false
+	game_ended = false
 	platform_duration = 15.0
 	$PlatformTimer.wait_time = 3.0
+	
+	
+	
+	if $OptionsMenuHUD.play_intro:
+		# Causes a crash on the second game starting (second call of .play()).
+#		$IntroAnimation.play("Intro1")
+#		await get_tree().create_timer($IntroAnimation.animation_duration).timeout
+#		$IntroAnimation.stop()
+#		$IntroAnimation.queue_free()
+		
+		# This seems to work.
+		var anim = intro_animation.instantiate()
+		anim.play("Intro1")
+		add_child(anim)
+		await get_tree().create_timer(anim.animation_duration).timeout
+		anim.queue_free()
+	
+	
+	
 	var player = player_scene.instantiate()
 	player.start($StartPosition.position)
 	$Ground.start($GroundPosition.position)
@@ -112,6 +150,8 @@ func game_over():
 #	print($Player)	# I don't know why it works this way, but it does, so heh.
 	$Player.queue_free()	# Without this using the EndButton would duplicate the Player.
 	$Ground.hide()
+	
+	game_ended = true
 	# $HUD.start_pressed = false
 	# $Player.hide()
 	# get_tree().reload_current_scene()
@@ -226,6 +266,7 @@ func animate_background():
 	background.position = $BackgroundStartPos.position
 	background.duration = background_duration
 	background.offset = background_offset
+	background.dark_mode = $OptionsMenuHUD.dark_mode
 	add_child(background)
 
 

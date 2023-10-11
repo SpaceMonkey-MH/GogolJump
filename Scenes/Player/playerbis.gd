@@ -16,6 +16,7 @@ var against_wall_right = false
 var against_roof = false
 
 var on_moving_platform_count = 0
+var in_main = false
 
 # @export var start_pressed = false
 
@@ -28,13 +29,13 @@ func _integrate_forces(state):
 	# Make it so the Player bounces off of the walls and roof.
 	if against_roof:
 #		print("roof")
-		state.apply_central_force(thrust.rotated(PI) / 8)
+		state.apply_central_force(thrust.rotated(PI) / 4)
 #		against_roof = false	#thrust
 	if against_wall_left:
-		state.apply_central_force(thrust.rotated(PI / 2) / 8)
+		state.apply_central_force(thrust.rotated(PI / 2) / 4)
 #		against_wall_left = false	#thrust
 	if against_wall_right:
-		state.apply_central_force(thrust.rotated(-PI / 2) / 8)
+		state.apply_central_force(thrust.rotated(-PI / 2) / 4)
 #		against_wall_right = false	#thrust
 	else:
 		state.apply_force(Vector2())
@@ -53,6 +54,10 @@ func _integrate_forces(state):
 func _ready():
 	set_contact_monitor(true)
 	set_max_contacts_reported(10000)  # Au pif value, to be changed!!!
+	# This is extremely ugly.
+	in_main = get_parent().name == "Main"
+#	print(get_parent().get_parent().name)
+#	print(in_main)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,7 +71,7 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	# print("hello")
-	if body.is_in_group("platforms"):	
+	if body.is_in_group("platforms") and in_main:	# Ugly.
 		# print("hi")
 		jump1 = true
 	if body.is_in_group("moving_platforms"):

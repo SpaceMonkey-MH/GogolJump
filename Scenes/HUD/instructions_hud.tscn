@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4du3bttuqpsk"]
+[gd_scene load_steps=13 format=3 uid="uid://b4du3bttuqpsk"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/instructions_hud.gd" id="1_v46e1"]
 [ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_n0sjr"]
@@ -30,6 +30,18 @@ action = &"ui_cancel"
 
 [sub_resource type="Shortcut" id="Shortcut_wt26o"]
 events = [SubResource("InputEventAction_3n2ga")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_nt623"]
+action = &"ui_right"
+
+[sub_resource type="Shortcut" id="Shortcut_ns8gv"]
+events = [SubResource("InputEventAction_nt623")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_raf3k"]
+action = &"ui_left"
+
+[sub_resource type="Shortcut" id="Shortcut_ex0y3"]
+events = [SubResource("InputEventAction_raf3k")]
 
 [node name="InstructionsHUD" type="CanvasLayer"]
 script = ExtResource("1_v46e1")
@@ -220,6 +232,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3tkqd")
+shortcut = SubResource("Shortcut_ns8gv")
 text = "Next"
 
 [node name="PreviousButton" type="Button" parent="."]
@@ -234,6 +247,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3tkqd")
+shortcut = SubResource("Shortcut_ex0y3")
 text = "Previous"
 
 [connection signal="pressed" from="CloseInstructionsButton" to="." method="_on_close_instructions_button_pressed"]

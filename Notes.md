@@ -15,7 +15,8 @@
 	It could be separated into small tutorial parts 
 	(in a Carrousel with a background, possibly with videos). // Done.
 
-- Corner of buttons. // This is piece of cake apparently, but long. So partially done, see if this is correct.
+- Corner of buttons. // This is piece of cake apparently, but long. 
+					// So partially done, see if this is correct.
 - Different font. // Done, but see if it is the good one.
 - Change background // Done.
 - Make background dynamically scroll with platforms. // Done.

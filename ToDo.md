@@ -13,7 +13,7 @@
 - Export on Linux. // Done.
 - Change the way the character "bounces" on walls and roof. // Done.
 - Make text proportionnal to the window size. // Done I think, not sure about the result, 
-												// needs testing. It's not great, it doesn't work correctly.
+											// needs testing. It's not great, it doesn't work correctly.
 - Rework the platform animation. // Done.
 - Make it so the player can end the game from a menu. // Done.
 - Make first platforms closer to the ground so there is no waiting. // Done.
@@ -21,10 +21,12 @@
 - Custom buttons. // Semi-done.
 - Implement Notes.md. // Done.
 - Reduce bounce on walls ? // Done.
+- Change background theme to light. Make it as an option? // Done.
+- Make shortcuts for buttons. // Done.
 
-#################################################################################################################
+##################################################################################################
 
-- Export on Android. 
+- Export on Android. // Probably not gonna happen.
 - Sound?
 - Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean it.
 - Finish comments and documentation.
@@ -35,3 +37,8 @@
 - Make options stay in save.
 - New highscore animation.
 - Create theme resource (beuh...).
+- Make border of character and platforms black so it's more visible.
+- Make story.
+- Change ground sprite.
+- Make demo?
+- Add intro animation.

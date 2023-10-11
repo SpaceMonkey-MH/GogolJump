@@ -63,12 +63,29 @@ func update_highscore(score):
 	else:
 		highscore = highscore_string.to_int()	# Casting to an int.
 #	print(highscore, " ", score)
-	highscore_string = str(max(highscore, score))	# Taking the max between the score and the highscore.
+
+	# Taking the max between the score and the highscore.
+	highscore_string = str(max(highscore, score))	
+	
+	# This could probably be optimized.
+	if highscore < score:
+		highscore_string = str(score)
+		new_highscore_animation()
+	else:
+		highscore_string = str(highscore)
 #	print(highscore_string)
 	save_to_file(highscore_string)	# Saving highscore.
 	$HighScoreLabel.text = "Highscore: " + highscore_string	# Displaying highscore.
 #	print("hello")
 	
+
+# Could be more complex.
+func new_highscore_animation():
+	# Changes the color of the highscore label to GOLD for 0.5 second.
+	$HighScoreLabel.set("theme_override_colors/font_color", Color.GOLD)
+	await get_tree().create_timer(0.5).timeout
+	$HighScoreLabel.set("theme_override_colors/font_color", Color.BLACK)
+
 
 
 # Handles what happens when the StartButton is pressed.

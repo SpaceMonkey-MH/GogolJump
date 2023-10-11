@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2j5xf044aly4"]
+[gd_scene load_steps=12 format=3 uid="uid://d2j5xf044aly4"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_u533j"]
 [ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_bak0e"]
@@ -16,11 +16,23 @@ action = &"start_game"
 [sub_resource type="Shortcut" id="Shortcut_dbpri"]
 events = [SubResource("InputEventAction_b2sk5")]
 
+[sub_resource type="InputEventAction" id="InputEventAction_fypw3"]
+action = &"instructions"
+
+[sub_resource type="Shortcut" id="Shortcut_6iyhn"]
+events = [SubResource("InputEventAction_fypw3")]
+
 [sub_resource type="InputEventAction" id="InputEventAction_yvrig"]
 action = &"pause"
 
 [sub_resource type="Shortcut" id="Shortcut_81w1l"]
 events = [SubResource("InputEventAction_yvrig")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_n2sge"]
+action = &"options"
+
+[sub_resource type="Shortcut" id="Shortcut_k306k"]
+events = [SubResource("InputEventAction_n2sge")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_u533j")
@@ -118,6 +130,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
+shortcut = SubResource("Shortcut_6iyhn")
 text = "Instructions"
 
 [node name="PauseButton" type="Button" parent="."]
@@ -154,6 +167,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_451tg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_451tg")
+shortcut = SubResource("Shortcut_k306k")
 text = "Options"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -2,8 +2,8 @@ extends Node2D
 
 signal scored
 
-@export var offset = Vector2(0, 771)	# Screen size + starter offset + 20 more
-@export var duration = 15.0
+var offset = Vector2(0, 771)	# Screen size + starter offset + 20 more
+var duration = 15.0
 
 
 # Called when the node enters the scene tree for the first time.

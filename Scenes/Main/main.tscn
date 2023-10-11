@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=14 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 [ext_resource type="PackedScene" uid="uid://dq864rx68rvhi" path="res://Scenes/HUD/pause_screen_hud.tscn" id="9_qedv1"]
 [ext_resource type="PackedScene" uid="uid://c0621kt01sk2w" path="res://Scenes/HUD/options_menu_hud.tscn" id="10_54gas"]
+[ext_resource type="PackedScene" uid="uid://dvj1x35pc02qc" path="res://Scenes/intro_animation.tscn" id="12_v6kvi"]
 
 [sub_resource type="Curve2D" id="Curve2D_vw1py"]
 _data = {
@@ -23,6 +24,7 @@ script = ExtResource("1_kdhwv")
 platform_scene = ExtResource("4_bvxep")
 player_scene = ExtResource("4_44phr")
 background_scene = ExtResource("4_7q5e1")
+intro_animation = ExtResource("12_v6kvi")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -2
@@ -31,12 +33,11 @@ offset_bottom = 720.0
 texture = ExtResource("5_k3f5i")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(240, 550)
+position = Vector2(240, 621)
 
 [node name="Ground" parent="." groups=["platforms"] instance=ExtResource("3_swhaf")]
 position = Vector2(240, 696)
 scale = Vector2(4.5, 3)
-falls = false
 
 [node name="PlatformTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -53,18 +54,15 @@ position = Vector2(85.0355, -31)
 position = Vector2(493, 358)
 rotation = 1.5708
 scale = Vector2(8, 1)
-falls = false
 
 [node name="WallLeft" parent="." groups=["wall_left"] instance=ExtResource("3_swhaf")]
 position = Vector2(-16, 358)
 rotation = 1.5708
 scale = Vector2(8, 1)
-falls = false
 
 [node name="Roof" parent="." groups=["roof"] instance=ExtResource("3_swhaf")]
 position = Vector2(240, -30)
 scale = Vector2(5, 1)
-falls = false
 
 [node name="DeathZone" parent="." groups=["death_zones"] instance=ExtResource("5_i6nd2")]
 position = Vector2(240, 750)

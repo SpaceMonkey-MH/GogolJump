@@ -18,3 +18,7 @@
 
 - For the bouncing on walls and roof, check collisions of Player and then check if it is wall left, right or roof
 	and give the player a push in the corresponding direction. // Done.
+
+
+- It could be done that the background sprites disappear at game over,
+	so that they don't remain after the end of the game, possibly until the next one starts.

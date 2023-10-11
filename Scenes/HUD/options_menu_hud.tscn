@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0621kt01sk2w"]
+[gd_scene load_steps=7 format=3 uid="uid://c0621kt01sk2w"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/options_menu_hud.gd" id="1_sravi"]
 [ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background/Background_1.png" id="2_iha7j"]
@@ -10,6 +10,12 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
+
+[sub_resource type="InputEventAction" id="InputEventAction_h0pfg"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_gurh0"]
+events = [SubResource("InputEventAction_h0pfg")]
 
 [node name="OptionsMenuHUD" type="CanvasLayer"]
 script = ExtResource("1_sravi")
@@ -48,6 +54,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5otqf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5otqf")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_5otqf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5otqf")
+shortcut = SubResource("Shortcut_gurh0")
 text = "Close"
 
 [node name="FastStartCheckBox" type="CheckBox" parent="."]
@@ -65,9 +72,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.5
+offset_left = -113.0
 offset_top = -159.0
-offset_right = 113.5
+offset_right = 114.0
 offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -78,5 +85,63 @@ will already be on the screen)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DarkModeCheckBox" type="CheckBox" parent="."]
+offset_left = 373.0
+offset_top = 259.0
+offset_right = 397.0
+offset_bottom = 283.0
+scale = Vector2(2, 2)
+icon_alignment = 1
+expand_icon = true
+
+[node name="DarkModeLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -103.0
+offset_right = 114.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mborg")
+text = "Dark mode (the animated
+ background will be darker)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayIntroCheckBox" type="CheckBox" parent="."]
+offset_left = 373.0
+offset_top = 313.0
+offset_right = 397.0
+offset_bottom = 337.0
+scale = Vector2(2, 2)
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlayIntroLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -49.0
+offset_right = 114.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mborg")
+text = "Play intro (an animation
+will be played before the game)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="toggled" from="FastStartCheckBox" to="." method="_on_fast_start_check_box_toggled"]
+[connection signal="toggled" from="DarkModeCheckBox" to="." method="_on_dark_mode_check_box_toggled"]
+[connection signal="toggled" from="PlayIntroCheckBox" to="." method="_on_play_intro_check_box_toggled"]
