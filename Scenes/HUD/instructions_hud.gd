@@ -3,7 +3,7 @@ extends CanvasLayer
 signal close_instructions
 
 var instructions
-var max_panes = 6
+#var max_panes = 6
 var pane_count = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -68,7 +68,7 @@ func _on_next_button_pressed():
 	instructions[pane_count].hide()
 	pane_count += 1
 	$PreviousButton.disabled = false
-	if pane_count >= max_panes - 1:
+	if pane_count >= instructions.size() - 1:
 		$NextButton.disabled = true
 #	print("next :", pane_count)
 	instructions[pane_count].show()

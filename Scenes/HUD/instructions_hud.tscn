@@ -93,6 +93,25 @@ offset_top = 109.0
 offset_right = 480.0
 offset_bottom = 720.0
 
+[node name="Instruction0" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -225.0
+offset_right = 198.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n0sjr")
+text = "Welcome to Gogol Jump!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Instruction1" type="Label" parent="Instructions"]
 layout_mode = 1
 anchors_preset = 8
@@ -108,8 +127,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_n0sjr")
-text = "In this game, 
-you control a round character that jumps automatically."
+text = "In this game, you control Gogol,
+a round character that jumps automatically.
+
+Gogol is a search engine new to the world,
+that has to climb its way up
+by stepping onto subsidiary companies,
+while flying past the competition."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -172,7 +196,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_n0sjr")
-text = "The goal is to earn score points, which are obtained 
+text = "The goal is to score points, which are obtained 
 when a platform reaches the bottom of the screeen,
 while avoiding falling.
 
@@ -226,6 +250,7 @@ offset_top = 528.0
 offset_right = 400.0
 offset_bottom = 559.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_n0sjr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3tkqd")
@@ -241,6 +266,7 @@ offset_top = 528.0
 offset_right = 155.0
 offset_bottom = 559.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_n0sjr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3tkqd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3tkqd")

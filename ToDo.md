@@ -27,22 +27,24 @@
 - Add more background sprites. // Done.
 - Make options stay in save. // Done.
 - New highscore animation. // Done more or less.
+- Make border of character and platforms black so it's more visible. Trying something with shader,
+	it seems ok but it won't work on platforms as it is (I think, maybe I'll try. I don't like the result),
+	to make it work I would have to change the way the platform end animation works 
+	(separate the explosion animation from the other ones). This is either a by hand angle or a quit. // Done?
+- Make story. // Done.
+- Change ground sprite. // Done but not satisfying. 
+						// This could be better with the grass on a different layer, idk really.
 
 ##################################################################################################
 
 - Export on Android. // Probably not gonna happen.
 - Sound?
-- Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean it.
+- Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean the main repo.
 - Finish comments and documentation.
 - Balance.
 - Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
 - Fix explosion animation borders.
 - Create theme resource (beuh...).
-- Make border of character and platforms black so it's more visible. Trying something with shader,
-	it seems ok but it won't work on platforms as it is (I think, maybe I'll try. I don't like the result),
-	to make it work I would have to change the way the platform end animation works 
-	(separate the explosion animation from the other ones). This is either a by hand angle or a quit.
-- Make story.
-- Change ground sprite.
 - Make demo?
+- Make in-game credits?

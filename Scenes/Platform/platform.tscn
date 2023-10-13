@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqi2j8xma4gsp"]
 
 [ext_resource type="Script" path="res://Scenes/Platform/platform.gd" id="1_ecord"]
-[ext_resource type="Texture2D" uid="uid://coydwxsre4d3s" path="res://Sprites/Platforms/Normal/Platform_1.png" id="2_5xwwl"]
+[ext_resource type="Texture2D" uid="uid://dgrc0titj7wpb" path="res://Sprites/Platforms/Normal/Ground_4.png" id="2_rboc8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ew7sc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5xwwl")
+"texture": ExtResource("2_rboc8")
 }],
 "loop": true,
 "name": &"idle",
@@ -21,9 +21,11 @@ size = Vector2(108, 28)
 script = ExtResource("1_ecord")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ew7sc")
 animation = &"idle"
+frame_progress = 0.963906
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m7e10")

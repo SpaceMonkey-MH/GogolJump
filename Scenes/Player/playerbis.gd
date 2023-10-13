@@ -71,17 +71,22 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	# print("hello")
+	
 	if body.is_in_group("platforms") and in_main:	# Ugly.
 		# print("hi")
-		jump1 = true
+		jump1 = true	# Means a thrust is applied to the player.
 	if body.is_in_group("moving_platforms"):
 		# print("hi2")
-		jump1 = true
+		jump1 = true	# Means a thrust is applied to the player.
+		
+		# Sends a signal when the player starts jumping on moving platforms for the firest time
+		# Allows the ground to disappear.
 		on_moving_platform_count += 1
 		if on_moving_platform_count == 1:	# This is to prevent a crash in main 
 											# (queue free on a null value).
 			on_moving_platform.emit()	# // I think this is irrelevant now.
 			# print("on_moving_platform for the first time")
+	
 	# Allows for the detection of collision with walls and roof (for the bouncing).
 	if body.is_in_group("roof"):
 #		print("against roof")
@@ -97,6 +102,8 @@ func _on_body_entered(body):
 # Another way to do this could be to use something like is_on_ground().
 # Apparently you can't with a RigidBody2D.
 
+
+# Used so that the jump stops after exiting the contact with a surface.
 func _on_body_exited(_body):
 	# print("goodbye")
 	# This causes error when the character isn't jumping or maybe is on ground.
@@ -107,12 +114,14 @@ func _on_body_exited(_body):
 	against_wall_right = false
 
 
+# Used to make the player spawn on the correct location.
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false	# Not sure if these do anything.
 
 
+# Used 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	# print("player_freed")

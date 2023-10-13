@@ -32,5 +32,7 @@
 - Class inheritance!!!
 
 
+- The death zone is kinda useless.
+
 
 
