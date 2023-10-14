@@ -109,6 +109,8 @@ func new_game():
 	$Ground.disabled = false
 	player.connect("on_moving_platform", _on_player_on_moving_platform)
 	# player.connect("start_pressed", on_start_pressed)
+	# Transmitting the sound option to the player scene.
+	player.sound_enabled = $OptionsMenuHUD.sound_enabled
 	add_child(player)
 	
 	$HUD.update_score(score)
@@ -150,6 +152,9 @@ func game_over():
 #	print($Player)	# I don't know why it works this way, but it does, so heh.
 	$Player.queue_free()	# Without this using the EndButton would duplicate the Player.
 	$Ground.hide()
+	if $OptionsMenuHUD.sound_enabled:	# If the sound is enabled,
+		$GameOverSound.play()			# Play the game over sound.
+										# This sound might be better if done by mouth.
 	
 	game_ended = true
 	# $HUD.start_pressed = false
@@ -175,8 +180,11 @@ func _on_platform_timer_timeout():
 	
 	# Set the platform's position to a random location.
 	# print(platform_spawn_location.position)
-	platform.position = platform_spawn_location.position	# I don't understand why this doesn't spawn 
-	# on the correct location. It does now, and I know why (the platform wasn't centered in the platform scene).
+	
+	# I don't understand why this doesn't spawn on the correct location.
+	# It does now, and I know why (the platform wasn't centered in the platform scene).
+	platform.position = platform_spawn_location.position
+	
 	
 	# Add some randomness the direction.
 	# direction += randf_range(-PI / 4, PI / 4)
@@ -202,6 +210,8 @@ func _on_death_zone_body_entered(body):	# Triggered when the player enters the d
 
 
 func on_scored():	# Connected to scored signal in moving_platform.
+	if $OptionsMenuHUD.sound_enabled:	# If the sound is enabled,
+		$PlatformExplosionSound.play()	# plays the sound of an explosion.
 	if score_started:	# This is to prevent score abusing by not jumping.
 		score += 1
 		# Changes the color of the score label to GOLD for 0.5 second.
@@ -219,7 +229,7 @@ func _on_player_on_moving_platform():	# Connected via code.
 	$Ground.disabled = true	# Works!
 
 func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms and accelerates 
-	# the platforms animations on a fixed timer.
+									# the platforms movement animations on a fixed timer.
 	$PlatformTimer.wait_time -= 0.25
 	platform_duration -= 1
 	# print(platform_duration, " ", $PlatformTimer.wait_time)

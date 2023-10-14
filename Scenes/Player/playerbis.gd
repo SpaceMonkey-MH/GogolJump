@@ -17,6 +17,7 @@ var against_roof = false
 
 var on_moving_platform_count = 0
 var in_main = false
+var sound_enabled = false	# Whether or not the sound has been enabled.
 
 # @export var start_pressed = false
 
@@ -25,20 +26,37 @@ func _integrate_forces(state):
 #	if jump1 and jump2:
 	if jump1:
 		state.apply_central_force(thrust)
+#		print("hello")
+		if sound_enabled:
+			$BoingSound.play()	# The sound is played 3 times or so, 
+								# but it is ok because it is instant.
+								# It would be ugly with polyphony.
 #		jump1 = false	#thrust
 	# Make it so the Player bounces off of the walls and roof.
 	if against_roof:
 #		print("roof")
 		state.apply_central_force(thrust.rotated(PI) / 4)
+		if sound_enabled:
+			$BoingSound.play()	# The sound is played 3 times or so, 
+								# but it is ok because it is instant.
+								# It would be ugly with polyphony.
 #		against_roof = false	#thrust
 	if against_wall_left:
 		state.apply_central_force(thrust.rotated(PI / 2) / 4)
+		if sound_enabled:
+			$BoingSound.play()	# The sound is played 3 times or so, 
+								# but it is ok because it is instant.
+								# It would be ugly with polyphony.
 #		against_wall_left = false	#thrust
 	if against_wall_right:
 		state.apply_central_force(thrust.rotated(-PI / 2) / 4)
+		if sound_enabled:
+			$BoingSound.play()	# The sound is played 3 times or so, 
+								# but it is ok because it is instant.
+								# It would be ugly with polyphony.
 #		against_wall_right = false	#thrust
 	else:
-		state.apply_force(Vector2())
+		state.apply_force(Vector2())	# Useless I think.
 	var rotation_direction = 0
 	if Input.is_action_pressed("ui_right"):
 		rotation_direction += 1
@@ -121,7 +139,7 @@ func start(pos):
 	$CollisionShape2D.disabled = false	# Not sure if these do anything.
 
 
-# Used 
+# Used to destroy (queue free) the player when it exits the screen.
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	# print("player_freed")

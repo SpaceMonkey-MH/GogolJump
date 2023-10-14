@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buett1qyui77u"]
+[gd_scene load_steps=8 format=3 uid="uid://buett1qyui77u"]
 
 [ext_resource type="Shader" path="res://Scenes/Player/playerbis.gdshader" id="1_a7h6e"]
 [ext_resource type="Script" path="res://Scenes/Player/playerbis.gd" id="1_j6ul4"]
 [ext_resource type="Texture2D" uid="uid://byohlodthna22" path="res://Sprites/Gogol_2.png" id="2_lqd3w"]
+[ext_resource type="AudioStream" uid="uid://dwwq5087wia5e" path="res://Sounds/Bouncing_1.wav" id="4_1oxur"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e2pig"]
 shader = ExtResource("1_a7h6e")
@@ -37,6 +38,9 @@ animation = &"walk"
 shape = SubResource("CapsuleShape2D_p3dck")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="BoingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1oxur")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

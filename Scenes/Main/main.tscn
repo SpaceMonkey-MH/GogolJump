@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=16 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 [ext_resource type="PackedScene" uid="uid://dq864rx68rvhi" path="res://Scenes/HUD/pause_screen_hud.tscn" id="9_qedv1"]
 [ext_resource type="PackedScene" uid="uid://c0621kt01sk2w" path="res://Scenes/HUD/options_menu_hud.tscn" id="10_54gas"]
+[ext_resource type="AudioStream" uid="uid://lkv45qfaf6a5" path="res://Sounds/Explosion_1.wav" id="13_r26tk"]
+[ext_resource type="AudioStream" uid="uid://cgsbtbwuwm53j" path="res://Sounds/Game_Over_1.mp3" id="14_4xjxa"]
 
 [sub_resource type="Curve2D" id="Curve2D_vw1py"]
 _data = {
@@ -100,6 +102,12 @@ position = Vector2(118, 2)
 position = Vector2(240, -50)
 
 [node name="BackgroundTimer" type="Timer" parent="."]
+
+[node name="PlatformExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_r26tk")
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_4xjxa")
 
 [connection signal="timeout" from="PlatformTimer" to="." method="_on_platform_timer_timeout"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
