@@ -18,21 +18,13 @@ func _ready():
 	if dark_mode == null:	# This is so there is a default value to the variables.
 		dark_mode = false
 	$DarkModeCheckBox.button_pressed = dark_mode
-#	print(play_intro)
 	if play_intro == null:	# This is so there is a default value to the variables.
 		play_intro = false
 	$PlayIntroCheckBox.button_pressed = play_intro
-#	print(play_intro)
-#	print(sound_enabled)
 	if sound_enabled == null:	# This is so there is a default value to the variables.
 		sound_enabled = false
 	$ToggleSoundCheckBox.button_pressed = sound_enabled
 		
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 # This setup is temporary as this doesn't scale well with the number of options. Meh it's fine.
@@ -65,7 +57,6 @@ func read_config():
 		dark_mode = new_config.get_value("OPTIONS_MENU_SECTION", "DARK_MODE_VALUE", false)
 		play_intro = new_config.get_value("OPTIONS_MENU_SECTION", "PLAY_INTRO_VALUE", false)
 		sound_enabled = new_config.get_value("OPTIONS_MENU_SECTION", "SOUND_ENABLED_VALUE", false)
-#		print(sound_enabled)
 		return
 
 
@@ -78,19 +69,16 @@ func _on_close_button_pressed():
 # When the CheckBox is toggled, change the corresponding variable's value.
 func _on_fast_start_check_box_toggled(button_pressed):
 	fast_start = button_pressed
-#	save_config()	# Maybe this should go in _on_close_button_pressed(), idk. Yes.
 
 
 # When the CheckBox is toggled, change the corresponding variable's value.
 func _on_dark_mode_check_box_toggled(button_pressed):
 	dark_mode = button_pressed
-#	save_config()	# Maybe this should go in _on_close_button_pressed(), idk. Yes.
 
 
 # When the CheckBox is toggled, change the corresponding variable's value.
 func _on_play_intro_check_box_toggled(button_pressed):
 	play_intro = button_pressed
-#	pass
 
 
 # When the CheckBox is toggled, change the corresponding variable's value.

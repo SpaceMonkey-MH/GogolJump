@@ -11,8 +11,6 @@ var number_of_dark = 8	# The number of dark background sprites. An error can cau
 func _ready():
 	start_tween()
 	var sprite_types = $AnimatableBody2D/AnimatedSprite2D.sprite_frames.get_animation_names()
-#	$AnimatableBody2D/AnimatedSprite2D.play(sprite_types[randi() % sprite_types.size()])
-#	$AnimatableBody2D/AnimatedSprite2D.play(sprite_types[3])
 
 	# This is the simplest way I could find. A regex might be better, but naaah.
 	if dark_mode:
@@ -25,8 +23,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-#	print(get_parent().game_ended)
+func _process(_delta):
 	if get_parent().game_ended:	# This isn't very elegant, but I can't find another solution.
 		queue_free()
 
@@ -34,7 +31,6 @@ func _process(delta):
 
 func start_tween():
 	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	# tween.set_loops().set_parallel(false)
 	tween.tween_property($AnimatableBody2D, "position", offset, duration)
 
 
