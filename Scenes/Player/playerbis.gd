@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-signal on_moving_platform
+signal on_moving_platform	# Connected via code in main (in new_game()).
 # signal start_pressed
 
 var thrust = Vector2(0, -15000)

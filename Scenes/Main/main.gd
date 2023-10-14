@@ -1,6 +1,7 @@
 extends Node
 
 
+# Needed to instantiate the scenes
 @export var platform_scene: PackedScene
 # @export var ground_scene: PackedScene
 @export var player_scene: PackedScene
@@ -11,7 +12,7 @@ extends Node
 
 var game_ended = false	# Whether the game has ended or not (game over reached).
 var score = 0
-var score_started = false
+var score_started = false	# Whether the player has started jumping on moving platforms.
 var platform_duration = 15.0
 @onready var platform_positions = $PlatformPositions.get_children()	# Initializing it now.
 # Time for a background sprite to reach the bottom; reverse of speed.
@@ -21,17 +22,18 @@ var background_offset = Vector2(0, 720 + 120)	# Height of the screen + 120.
 # Cooldown for the appearance of the background sprites. t = h * T / H.
 # Apparently this doesn't work well, so I added a magic number.
 var background_cooldown = background_height * background_duration / background_offset.y - 0.1
-var score_goal = 1	# Score to reach to start the moving background.
+var score_goal = 10	# Score to reach to start the moving background.
 # Whether the score need to start the moving background has been reached.
 var score_reached = false	
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Hides things we don't want on the main screen.
 	$Ground.hide()
 	$PauseScreenHUD.hide()
 	$OptionsMenuHUD.hide()
-	$HUD.update_highscore(score)
+	$HUD.update_highscore(score)	# So that the highscore is shown on the main screen.
 	get_window().title = "Gogol Jump"
 	
 	
@@ -91,22 +93,23 @@ func new_game():
 #		$IntroAnimation.queue_free()
 		
 		# This seems to work.
-		var anim = intro_animation.instantiate()
-		anim.play("Intro1")
-		add_child(anim)
-		await get_tree().create_timer(anim.animation_duration).timeout
-		anim.queue_free()
+		var anim = intro_animation.instantiate()	# Instantiate scene.
+		anim.play("Intro1")							# Play Intro1 animation.
+		add_child(anim)								# Add instance as a child.
+		await get_tree().create_timer(anim.animation_duration).timeout	# Wait 1 second.
+		anim.queue_free()							# Destroy scene.
 	
 	
 	
-	var player = player_scene.instantiate()
-	player.start($StartPosition.position)
-	$Ground.start($GroundPosition.position)
-	player.show()
+	$Ground.start($GroundPosition.position)	# Set position of Ground.
+#	player.show()	# This seems useless.
 	$PlatformTimer.start()
 	$MetaGameTimer.start()
 	$Ground.show()
 	$Ground.disabled = false
+	var player = player_scene.instantiate()	# Instantiate scene.
+	player.start($StartPosition.position)	# Set position.
+	# Connect the signal via code (signal in PlayerBis
 	player.connect("on_moving_platform", _on_player_on_moving_platform)
 	# player.connect("start_pressed", on_start_pressed)
 	# Transmitting the sound option to the player scene.
@@ -128,6 +131,10 @@ func new_game():
 func place_platform(pos):
 	var platform = platform_scene.instantiate()
 	# Trying to fix the end animation for the starting platforms. It works!!
+	# Otherwise the explosion is played out of the screen. This is beacause of how
+	# the explosion animation works, as it is an animation of the platform,
+	# so it plays at the position of the platform.
+	# This fix makes sure the platforms end their course near the edge of the screen.
 	var offsetY = platform.offset.y - (pos.y + 31)
 	var offset = Vector2(0, offsetY)
 #	print(pos)
@@ -143,11 +150,15 @@ func place_platform(pos):
 #	print(platform.position.y, " ", platform.offset)
 
 
+# Called when the player loses (exits the screen) or clicks the end game button.
 func game_over():
+	# Calls the show_game_over() function of the HUD scene (cf HUD code).
 	$HUD.show_game_over()
+	# Stops all the timers running.
 	$PlatformTimer.stop()
 	$MetaGameTimer.stop()
 	$BackgroundTimer.stop()
+	# Destroy (queue free) all the moving platforms.
 	get_tree().call_group("moving_platforms", "queue_free")
 #	print($Player)	# I don't know why it works this way, but it does, so heh.
 	$Player.queue_free()	# Without this using the EndButton would duplicate the Player.
@@ -272,12 +283,12 @@ func _on_pause_screen_hud_game_ended():
 
 
 func animate_background():
-	var background = background_scene.instantiate()
-	background.position = $BackgroundStartPos.position
-	background.duration = background_duration
-	background.offset = background_offset
-	background.dark_mode = $OptionsMenuHUD.dark_mode
-	add_child(background)
+	var background = background_scene.instantiate()	# Creates instance of background sprite.
+	background.position = $BackgroundStartPos.position	# Sets up position.
+	background.duration = background_duration	# Sets up duration (reverse of speed).
+	background.offset = background_offset	# Sets up offset (movement vector).
+	background.dark_mode = $OptionsMenuHUD.dark_mode	# Sets up dark mode.
+	add_child(background)	# Adds instance as a child.
 
 
 func _on_background_timer_timeout():

@@ -37,6 +37,7 @@
 - Change ground sprite. // Done but not satisfying. 
 						// This could be better with the grass on a different layer, idk really.
 - Sound? // Done in principle, more sounds should be added for a better effect.
+		// The game over sound should be done by mouth.
 
 ##################################################################################################
 
