@@ -42,7 +42,7 @@ position = Vector2(240, 696)
 scale = Vector2(4.5, 3)
 
 [node name="PlatformTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 
 [node name="PlatformSpawnPath" type="Path2D" parent="."]
 position = Vector2(-84.3333, 31)

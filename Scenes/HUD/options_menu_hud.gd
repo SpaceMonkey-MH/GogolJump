@@ -1,28 +1,28 @@
 extends CanvasLayer
 
 signal closed	# Signal for when the CloseButton has been pressed.
-var fast_start = false	# Whether or not there are platforms close to the ground at the start.
-var dark_mode = false	# Whether or not the moving background is dark.
-var play_intro = false	# Whether or not the intro is played.
-var sound_enabled = false	# Whether or not sound is played in the game.
+var fast_start = true	# Whether or not there are platforms close to the ground at the start.
+var dark_mode = true	# Whether or not the moving background is dark.
+var play_intro = true	# Whether or not the intro is played.
+var sound_enabled = true	# Whether or not sound is played in the game.
 const SETTINGS_FILE_PATH = "user://config.cfg"	# Path to where the options are saved.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	read_config()
 	if fast_start == null:	# This is so there is a default value to the variables.
-		fast_start = false	# There is sometimes an issue with a null value.
+		fast_start = true	# There is sometimes an issue with a null value.
 							# In effect, this is useless, because new_config.get_value()
 							# is set to default to false
 	$FastStartCheckBox.button_pressed = fast_start
 	if dark_mode == null:	# This is so there is a default value to the variables.
-		dark_mode = false
+		dark_mode = true
 	$DarkModeCheckBox.button_pressed = dark_mode
 	if play_intro == null:	# This is so there is a default value to the variables.
-		play_intro = false
+		play_intro = true
 	$PlayIntroCheckBox.button_pressed = play_intro
 	if sound_enabled == null:	# This is so there is a default value to the variables.
-		sound_enabled = false
+		sound_enabled = true
 	$ToggleSoundCheckBox.button_pressed = sound_enabled
 		
 

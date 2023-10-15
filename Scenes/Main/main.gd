@@ -12,7 +12,7 @@ extends Node
 var game_ended = false	# Whether the game has ended or not (game over reached).
 var score = 0
 var score_started = false	# Whether the player has started jumping on moving platforms.
-var platform_duration = 15.0
+var platform_duration
 @onready var platform_positions = $PlatformPositions.get_children()	# Initializing it now.
 # Time for a background sprite to reach the bottom; reverse of speed.
 var background_duration = 15	
@@ -52,8 +52,8 @@ func new_game():
 	score_reached = false
 	score_started = false
 	game_ended = false
-	platform_duration = 15.0
-	$PlatformTimer.wait_time = 3.0
+	platform_duration = 15.0	# In V1.0 it's 15.0
+	$PlatformTimer.wait_time = 2.0	# In V1.0 it's 3.0
 	
 	
 	
@@ -174,8 +174,10 @@ func _on_player_on_moving_platform():	# Connected via code.
 
 func _on_meta_game_timer_timeout():	# Reduces the delai between two platforms and accelerates 
 									# the platforms movement animations on a fixed timer.
-	$PlatformTimer.wait_time -= 0.25
+#	$PlatformTimer.wait_time -= 0.25	# V1.0
 	platform_duration -= 1
+	# Setting a maximum for the platform speed, 6.0 is possible but very hard.
+	platform_duration = max(platform_duration, 7.0)	# V1.1
 
 
 

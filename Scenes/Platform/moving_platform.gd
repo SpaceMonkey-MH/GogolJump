@@ -24,7 +24,7 @@ func get_sprite_types():
 	var types = $AnimatableBody2D/AnimatedSprite2D.sprite_frames.get_animation_names()
 	var types2 = []
 	for type in types:
-		if type != "sparks" and type != "explosion" and type != "explosion2":
+		if type != "explosion":
 			types2.append(type)
 	return types2
 
@@ -33,6 +33,6 @@ func get_sprite_types():
 func _on_visible_on_screen_notifier_2d_screen_exited():	# This works
 	scored.emit()
 	# WARNING: this has an ugly result because the explosion animation isn't properly cut out!
-	$AnimatableBody2D/AnimatedSprite2D.play("explosion2")
+	$AnimatableBody2D/AnimatedSprite2D.play("explosion")
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

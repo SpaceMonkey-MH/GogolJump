@@ -12,8 +12,8 @@
 - Make platforms thicker. // Done.
 - Export on Linux. // Done.
 - Change the way the character "bounces" on walls and roof. // Done.
-- Make text proportionnal to the window size. // Done I think, not sure about the result, 
-											// needs testing. It's not great, it doesn't work correctly.
+- Make text proportionnal to the window size. // Done I think, not sure about the result, needs
+											// testing. It's not great, it doesn't work correctly.
 - Rework the platform animation. // Done.
 - Make it so the player can end the game from a menu. // Done.
 - Make first platforms closer to the ground so there is no waiting. // Done.
@@ -38,6 +38,9 @@
 						// This could be better with the grass on a different layer, idk really.
 - Sound? // Done in principle, more sounds should be added for a better effect.
 		// The game over sound should be done by mouth.
+- Make options default to true. // Done.
+- Make platforms abundant at the beginning and rarer at the end. // Done.
+- Change explosion animation for one that fits correctly. // Done.
 
 ##################################################################################################
 
