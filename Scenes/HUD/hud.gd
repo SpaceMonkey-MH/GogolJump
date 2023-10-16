@@ -125,4 +125,5 @@ func _on_pause_button_pressed():
 
 
 func _on_options_button_pressed():
+	hide()
 	options.emit()

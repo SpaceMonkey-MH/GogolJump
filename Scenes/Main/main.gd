@@ -204,6 +204,7 @@ func _on_hud_options():
 
 func _on_options_menu_hud_closed():
 	$OptionsMenuHUD.hide()
+	$HUD.show()
 
 
 func _on_pause_screen_hud_game_ended():
