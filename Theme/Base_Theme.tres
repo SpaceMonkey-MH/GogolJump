@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://h1wbevawftn7"]
+
+[ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="1_gasjm"]
+
+[resource]
+default_font = ExtResource("1_gasjm")

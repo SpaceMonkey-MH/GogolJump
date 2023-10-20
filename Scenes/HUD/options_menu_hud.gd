@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal closed	# Signal for when the CloseButton has been pressed.
+signal credits	# Signal for when the CreditsButton has been pressed.
 var fast_start = true	# Whether or not there are platforms close to the ground at the start.
 var dark_mode = true	# Whether or not the moving background is dark.
 var play_intro = true	# Whether or not the intro is played.
@@ -66,6 +67,10 @@ func _on_close_button_pressed():
 	save_config()	# Saving the options to the config file.
 
 
+func _on_credits_button_pressed():
+	credits.emit()
+
+
 # When the CheckBox is toggled, change the corresponding variable's value.
 func _on_fast_start_check_box_toggled(button_pressed):
 	fast_start = button_pressed
@@ -84,3 +89,4 @@ func _on_play_intro_check_box_toggled(button_pressed):
 # When the CheckBox is toggled, change the corresponding variable's value.
 func _on_toggle_sound_check_box_toggled(button_pressed):
 	sound_enabled = button_pressed
+

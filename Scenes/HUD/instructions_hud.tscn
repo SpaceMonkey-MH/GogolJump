@@ -46,10 +46,11 @@ events = [SubResource("InputEventAction_raf3k")]
 [node name="InstructionsHUD" type="CanvasLayer"]
 script = ExtResource("1_v46e1")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 480.0
 offset_bottom = 720.0
 texture = ExtResource("2_pyple")
+metadata/_edit_use_anchors_ = true
 
 [node name="CloseInstructionsButton" type="Button" parent="."]
 anchors_preset = 1

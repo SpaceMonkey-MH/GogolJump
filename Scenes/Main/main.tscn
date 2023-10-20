@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bojamfysithu7"]
+[gd_scene load_steps=17 format=3 uid="uid://bojamfysithu7"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_kdhwv"]
 [ext_resource type="PackedScene" uid="uid://bqi2j8xma4gsp" path="res://Scenes/Platform/platform.tscn" id="3_swhaf"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b4du3bttuqpsk" path="res://Scenes/HUD/instructions_hud.tscn" id="7_68s3j"]
 [ext_resource type="PackedScene" uid="uid://dq864rx68rvhi" path="res://Scenes/HUD/pause_screen_hud.tscn" id="9_qedv1"]
 [ext_resource type="PackedScene" uid="uid://c0621kt01sk2w" path="res://Scenes/HUD/options_menu_hud.tscn" id="10_54gas"]
+[ext_resource type="PackedScene" uid="uid://ceksm380umuxg" path="res://Scenes/HUD/credits_hud.tscn" id="11_etsy5"]
 [ext_resource type="AudioStream" uid="uid://lkv45qfaf6a5" path="res://Sounds/Explosion_1.wav" id="13_r26tk"]
 [ext_resource type="AudioStream" uid="uid://cgsbtbwuwm53j" path="res://Sounds/Game_Over_1.mp3" id="14_4xjxa"]
 
@@ -71,7 +72,6 @@ position = Vector2(240, 750)
 
 [node name="MetaGameTimer" type="Timer" parent="."]
 wait_time = 20.0
-autostart = true
 
 [node name="GroundPosition" type="Marker2D" parent="."]
 position = Vector2(240, 696)
@@ -79,6 +79,8 @@ position = Vector2(240, 696)
 [node name="HUD" parent="." instance=ExtResource("6_wrhyc")]
 
 [node name="InstructionsHUD" parent="." instance=ExtResource("7_68s3j")]
+
+[node name="CreditsHUD" parent="." instance=ExtResource("11_etsy5")]
 
 [node name="PlatformPositions" type="Node2D" parent="."]
 
@@ -118,6 +120,8 @@ stream = ExtResource("14_4xjxa")
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="unpaused" from="HUD" to="." method="_on_hud_unpaused"]
 [connection signal="close_instructions" from="InstructionsHUD" to="." method="_on_instructions_hud_close_instructions"]
+[connection signal="closed" from="CreditsHUD" to="." method="_on_credits_hud_closed"]
 [connection signal="game_ended" from="PauseScreenHUD" to="." method="_on_pause_screen_hud_game_ended"]
 [connection signal="closed" from="OptionsMenuHUD" to="." method="_on_options_menu_hud_closed"]
+[connection signal="credits" from="OptionsMenuHUD" to="." method="_on_options_menu_hud_credits"]
 [connection signal="timeout" from="BackgroundTimer" to="." method="_on_background_timer_timeout"]

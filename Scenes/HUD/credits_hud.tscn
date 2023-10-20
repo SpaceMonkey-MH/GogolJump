@@ -1,0 +1,148 @@
+[gd_scene load_steps=15 format=3 uid="uid://ceksm380umuxg"]
+
+[ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background/Background_1.png" id="1_luqik"]
+[ext_resource type="Script" path="res://Scenes/HUD/credits_hud.gd" id="1_tybnc"]
+[ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_m8o7j"]
+[ext_resource type="Theme" uid="uid://h1wbevawftn7" path="res://Theme/Base_Theme.tres" id="4_80hf3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3behl"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vl2j"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r411"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="InputEventAction" id="InputEventAction_3n2ga"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_mum2f"]
+events = [SubResource("InputEventAction_3n2ga")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kltta"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="InputEventAction" id="InputEventAction_nt623"]
+action = &"ui_right"
+
+[sub_resource type="Shortcut" id="Shortcut_hg75m"]
+events = [SubResource("InputEventAction_nt623")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_raf3k"]
+action = &"ui_left"
+
+[sub_resource type="Shortcut" id="Shortcut_al1v4"]
+events = [SubResource("InputEventAction_raf3k")]
+
+[node name="CreditsHUD" type="CanvasLayer"]
+script = ExtResource("1_tybnc")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 720.0
+texture = ExtResource("1_luqik")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseCreditsButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -434.0
+offset_top = 57.0
+offset_right = -341.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m8o7j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3behl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8vl2j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4r411")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4r411")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4r411")
+shortcut = SubResource("Shortcut_mum2f")
+text = "Close credits
+"
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 50.0
+offset_right = 144.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m8o7j")
+theme_override_font_sizes/font_size = 40
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -250.0
+offset_right = 240.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_80hf3")
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 325.0
+offset_top = 652.0
+offset_right = 400.0
+offset_bottom = 683.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m8o7j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kltta")
+shortcut = SubResource("Shortcut_hg75m")
+text = "Next"
+
+[node name="PreviousButton" type="Button" parent="."]
+offset_left = 80.0
+offset_top = 652.0
+offset_right = 155.0
+offset_bottom = 683.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m8o7j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kltta")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kltta")
+shortcut = SubResource("Shortcut_al1v4")
+text = "Previous"
+
+[connection signal="pressed" from="CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]

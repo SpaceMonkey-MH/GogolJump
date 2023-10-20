@@ -224,3 +224,12 @@ func animate_background():
 func _on_background_timer_timeout():
 	animate_background()
 	
+
+
+func _on_options_menu_hud_credits():
+	$OptionsMenuHUD.hide()
+	$CreditsHUD.show()
+
+
+func _on_credits_hud_closed():
+	$OptionsMenuHUD.show()

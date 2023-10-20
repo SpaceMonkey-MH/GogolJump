@@ -1,8 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0621kt01sk2w"]
+[gd_scene load_steps=12 format=3 uid="uid://c0621kt01sk2w"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/options_menu_hud.gd" id="1_sravi"]
 [ext_resource type="Texture2D" uid="uid://3ksftiktgkom" path="res://Sprites/Background/Background_1.png" id="2_iha7j"]
 [ext_resource type="FontFile" uid="uid://cs6vhwo83p170" path="res://Fonts/Bonus Coffee.otf" id="2_mborg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x1em"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta3ub"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60xld"]
+bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="InputEventAction" id="InputEventAction_3n2ga"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_2yqvs"]
+events = [SubResource("InputEventAction_3n2ga")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5otqf"]
 bg_color = Color(0.458824, 0.423529, 0.388235, 0.580392)
@@ -12,7 +39,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="InputEventAction" id="InputEventAction_h0pfg"]
-action = &"ui_cancel"
+action = &"credits"
 
 [sub_resource type="Shortcut" id="Shortcut_gurh0"]
 events = [SubResource("InputEventAction_h0pfg")]
@@ -20,10 +47,11 @@ events = [SubResource("InputEventAction_h0pfg")]
 [node name="OptionsMenuHUD" type="CanvasLayer"]
 script = ExtResource("1_sravi")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 480.0
 offset_bottom = 720.0
 texture = ExtResource("2_iha7j")
+metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5
@@ -40,11 +68,31 @@ theme_override_font_sizes/font_size = 30
 text = "Game options"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CloseButton" type="Button" parent="."]
-offset_left = 388.0
+[node name="CloseOptionsButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -137.0
 offset_top = 57.0
-offset_right = 440.0
+offset_right = -36.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mborg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x1em")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ta3ub")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_60xld")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_60xld")
+theme_override_styles/focus = SubResource("StyleBoxFlat_60xld")
+shortcut = SubResource("Shortcut_2yqvs")
+text = "Close options"
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 46.0
+offset_top = 57.0
+offset_right = 98.0
 offset_bottom = 88.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mborg")
@@ -55,7 +103,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5otqf")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_5otqf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5otqf")
 shortcut = SubResource("Shortcut_gurh0")
-text = "Close"
+text = "Credits"
+metadata/_edit_use_anchors_ = true
 
 [node name="FastStartCheckBox" type="CheckBox" parent="."]
 offset_left = 373.0
@@ -65,6 +114,7 @@ offset_bottom = 225.0
 scale = Vector2(2, 2)
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="FastStartLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -84,6 +134,7 @@ text = "Start faster (first platforms
 will already be on the screen)"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="DarkModeCheckBox" type="CheckBox" parent="."]
 offset_left = 373.0
@@ -93,6 +144,7 @@ offset_bottom = 281.0
 scale = Vector2(2, 2)
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="DarkModeLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -112,6 +164,7 @@ text = "Enable dark mode (the animated
  background will be darker)"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayIntroCheckBox" type="CheckBox" parent="."]
 offset_left = 373.0
@@ -121,6 +174,7 @@ offset_bottom = 337.0
 scale = Vector2(2, 2)
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayIntroLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -140,6 +194,7 @@ text = "Play intro (an animation
 will be played before the game)"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ToggleSoundCheckBox" type="CheckBox" parent="."]
 offset_left = 373.0
@@ -149,6 +204,7 @@ offset_bottom = 393.0
 scale = Vector2(2, 2)
 icon_alignment = 1
 expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ToggleSoundLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -167,8 +223,10 @@ theme_override_fonts/font = ExtResource("2_mborg")
 text = "Enable sound"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseOptionsButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="toggled" from="FastStartCheckBox" to="." method="_on_fast_start_check_box_toggled"]
 [connection signal="toggled" from="DarkModeCheckBox" to="." method="_on_dark_mode_check_box_toggled"]
 [connection signal="toggled" from="PlayIntroCheckBox" to="." method="_on_play_intro_check_box_toggled"]

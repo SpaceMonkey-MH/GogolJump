@@ -41,16 +41,17 @@
 - Make options default to true. // Done.
 - Make platforms abundant at the beginning and rarer at the end. // Done.
 - Change explosion animation for one that fits correctly. // Done.
+- Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean the main repo.
+										// Done.
+- Fix explosion animation borders.
+- Create theme resource (beuh...). // Done. Only partial cause I don't want to deal with this.
+- Rework difficulty scaling? // Done.
+- Balance. // Done.
+- Finish comments and documentation. // Semi-done.
+- Make in-game credits? // Done but not pretty.
 
 ##################################################################################################
 
 - Export on Android. // Probably not gonna happen.
-- Clean code (prints and useless crap). // Maybe. Make a copy of the project and clean the main repo.
-- Finish comments and documentation.
-- Balance.
-- Rework difficulty scaling?
 - Fix window resize behavior. // Should be hard.
-- Fix explosion animation borders.
-- Create theme resource (beuh...).
 - Make demo?
-- Make in-game credits?

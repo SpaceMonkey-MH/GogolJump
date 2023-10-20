@@ -3,17 +3,20 @@ Font by Khurasan: www.khurasanstudio.com
 Platform explosion animation: https://www.icegif.com/explosion-39
 Game over sound: https://pixabay.com/sound-effects
 
+Coucelling: Julien Berry
+Game development: Mayeul Hospital
 
-Licencing:
+#Licencing:
 	- Godot Engine:
 		This game uses Godot Engine, available under the following license:
 
-		Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky,
-		Ariel Manzur.
+		Copyright (c) 2014-present Godot Engine contributors. Copyright (c)
+		2007-2014 Juan Linietsky, Ariel Manzur.
 
-		Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-		and associated documentation files (the "Software"), to deal in the Software without restriction,
-		including without limitation the rights to use, copy, modify, merge, publish, distribute,
+		Permission is hereby granted, free of charge, to any person obtaining
+		a copy of this software and associated documentation files (the "Software"),
+		to deal in the Software without restriction, including without limitation
+		the rights to use, copy, modify, merge, publish, distribute,
 		sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
 		is furnished to do so, subject to the following conditions:
 
@@ -25,12 +28,8 @@ Licencing:
 		AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 		DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-	
-	- FreeType:
-		Portions of this software are copyright © 1996-2022 The FreeType Project (www.freetype.org).
-		All rights reserved.
-	
-	- ENet:
+
+	#- ENet:
 		Copyright (c) 2002-2020 Lee Salzman
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -47,8 +46,8 @@ Licencing:
 		NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 		DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-	
-	- mbed TLS:
+
+	#- mbed TLS:
 		Copyright The Mbed TLS Contributors
 
 		Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -61,3 +60,6 @@ Licencing:
 		either express or implied. See the License for the specific language governing permissions
 		and limitations under the License.
 
+	- FreeType:
+		Portions of this software are copyright © 1996-2022 The FreeType Project (www.freetype.org).
+		All rights reserved.
