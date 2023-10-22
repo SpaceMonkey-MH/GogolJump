@@ -1,8 +1,8 @@
-# GogolJump
-Un logo de Google avec couleurs inversées ou un 10^100 
-saute de plateforme en plateforme vers le haut, pour marquer des points
-tout en évitant de mourir d'une façon ou d'une autre. Le but est de marquer le plus
-de points possible.
+# Gogol Jump
+This project is a small 2D game in which you control a round character,
+in the shape of a multi-colored "**G**", that jumps around on moving platforms, trying to
+avoid falling down. Points are obtained over time (when paltforms reach the bottom of the screen),
+the goal being to reach the highest score possible.
 
 
 

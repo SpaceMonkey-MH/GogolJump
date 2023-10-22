@@ -1,10 +1,16 @@
 For the shaders for the outer outline of the player: https://www.youtube.com/watch?v=UBujOvMRNl0
+
 Font by Khurasan: www.khurasanstudio.com
+
 Platform explosion animation: https://www.icegif.com/explosion-39
+
 Game over sound: https://pixabay.com/sound-effects
 
-Coucelling: Julien Berry
-Game development: Mayeul Hospital
+
+Team:
+	Coucelling: Julien Berry
+	Game development: Mayeul Hospital
+
 
 #Licencing:
 	- Godot Engine:

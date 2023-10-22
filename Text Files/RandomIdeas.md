@@ -21,4 +21,4 @@
 
 
 - It could be done that the background sprites disappear at game over,
-	so that they don't remain after the end of the game, possibly until the next one starts.
+	so that they don't remain after the end of the game, possibly until the next one starts. // Done.
