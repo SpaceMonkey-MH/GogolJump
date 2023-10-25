@@ -25,7 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if get_parent().game_ended:	# This isn't very elegant, but I can't find another solution.
-		queue_free()
+		queue_free()	# Used so that the moving background disappears at game over.
 
 
 
