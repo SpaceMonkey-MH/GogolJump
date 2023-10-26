@@ -25,6 +25,7 @@ func show_message(text):
 
 # Function used to display the game-over message and reset the HUD to the start game state.
 func show_game_over():
+	$PauseButton.text = "Pause"
 	$PauseButton.hide()
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down.
