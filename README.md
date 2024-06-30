@@ -10,4 +10,5 @@ This game is freely inspired by the platformer genre and the game Doodle Jump in
 however, though it is a finished project, there lack functionnalities for it to be a truly complete game.
 
 
+You can download the game for free on https://spacemonkey-mh.itch.io/gogol-jump
 The current build uses Godot 4.1.1.stable.
