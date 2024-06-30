@@ -11,4 +11,6 @@ however, though it is a finished project, there lack functionnalities for it to 
 
 
 You can download the game for free on https://spacemonkey-mh.itch.io/gogol-jump
+
+
 The current build uses Godot 4.1.1.stable.
