@@ -73,6 +73,7 @@ func new_game():
 	$Ground.show()
 	$Ground.disabled = false
 	var player = player_scene.instantiate()	# Instantiate scene.
+	#print("Type of player in main.gd: ", type_string(typeof(player)))
 	player.start($StartPosition.position)	# Set position.
 	# Connect the signal via code (signal in PlayerBis
 	player.connect("on_moving_platform", _on_player_on_moving_platform)
